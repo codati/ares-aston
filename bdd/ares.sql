@@ -12,14 +12,14 @@ USE `ares`;
 DROP TABLE IF EXISTS `ChefDeProjet`;
 CREATE TABLE `ChefDeProjet` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `password` varchar(255) NOT NULL,
   `login` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 TRUNCATE `ChefDeProjet`;
-INSERT INTO `ChefDeProjet` (`id`, `password`, `login`) VALUES
-(1,	'$2y$10$3sMrq.aQs9Jl6j04p9PEuuy/UopgfpnqdiT4sedKEs3FMTNfIJnVi',	'test');
+INSERT INTO `ChefDeProjet` (`id`, `login`, `password`) VALUES
+(1,	'test',	'$2y$10$3sMrq.aQs9Jl6j04p9PEuuy/UopgfpnqdiT4sedKEs3FMTNfIJnVi');
 
 DROP TABLE IF EXISTS `Tache`;
 CREATE TABLE `Tache` (
@@ -38,14 +38,14 @@ TRUNCATE `Tache`;
 DROP TABLE IF EXISTS `Utilisateur`;
 CREATE TABLE `Utilisateur` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `password` varchar(255) NOT NULL,
   `login` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 TRUNCATE `Utilisateur`;
-INSERT INTO `Utilisateur` (`id`, `password`, `login`) VALUES
-(1,	'$2y$10$pTEmeZu2dtDstB0v.7wSTOwWVZlNCNMK74WnGJod57RoNiDeGgLyS',	'test');
+INSERT INTO `Utilisateur` (`id`, `login`, `password`) VALUES
+(1,	'test',	'$2y$10$pTEmeZu2dtDstB0v.7wSTOwWVZlNCNMK74WnGJod57RoNiDeGgLyS');
 
 DROP TABLE IF EXISTS `Utilisateur-Tache`;
 CREATE TABLE `Utilisateur-Tache` (
@@ -59,4 +59,4 @@ CREATE TABLE `Utilisateur-Tache` (
 
 TRUNCATE `Utilisateur-Tache`;
 
--- 2016-08-22 10:02:33
+-- 2016-08-22 10:41:29
