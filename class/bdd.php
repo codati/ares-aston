@@ -14,7 +14,7 @@
 class Bdd {
 
   private static $bddInstence;
-  public $bdd;
+  private $bdd;
   private $config;
 
   function __construct() {
@@ -28,7 +28,7 @@ class Bdd {
     if (!isset(self::$bddInstence)) {
       self::$bddInstence = new Bdd();
     }
-    return self::$bddInstence;
+    return self::$bddInstence->bdd;
   }
 
 }
