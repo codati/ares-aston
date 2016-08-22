@@ -13,7 +13,11 @@
  */
 class Tools {
 
-  static function renderView($nameView) {
+  static function renderView($nameView,$data = array()) {
+    foreach ($data as $key => $value) {
+      $$key = $value;
+    }
+    
     require PATH_VIEW . $nameView . '.php';
   }
 
