@@ -11,7 +11,11 @@ namespace Controller;
 class Login {
 
   function getView() {
-    require PATH_VIEW . 'login.php';
+    if (isset($_SESSION['lastPost'])) {
+      \Tools::renderView('login', $_SESSION['lastPost']);
+    } else {
+      \Tools::renderView('login');
+    }
   }
 
   function connect() {
