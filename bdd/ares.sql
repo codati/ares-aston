@@ -15,9 +15,11 @@ CREATE TABLE `ChefDeProjet` (
   `password` varchar(255) NOT NULL,
   `login` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 TRUNCATE `ChefDeProjet`;
+INSERT INTO `ChefDeProjet` (`id`, `password`, `login`) VALUES
+(1,	'$2y$10$3sMrq.aQs9Jl6j04p9PEuuy/UopgfpnqdiT4sedKEs3FMTNfIJnVi',	'test');
 
 DROP TABLE IF EXISTS `Tache`;
 CREATE TABLE `Tache` (
@@ -42,6 +44,8 @@ CREATE TABLE `Utilisateur` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 TRUNCATE `Utilisateur`;
+INSERT INTO `Utilisateur` (`id`, `password`, `login`) VALUES
+(1,	'$2y$10$pTEmeZu2dtDstB0v.7wSTOwWVZlNCNMK74WnGJod57RoNiDeGgLyS',	'test');
 
 DROP TABLE IF EXISTS `Utilisateur-Tache`;
 CREATE TABLE `Utilisateur-Tache` (
@@ -55,4 +59,4 @@ CREATE TABLE `Utilisateur-Tache` (
 
 TRUNCATE `Utilisateur-Tache`;
 
--- 2016-08-22 08:38:37
+-- 2016-08-22 10:02:33
