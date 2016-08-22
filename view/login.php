@@ -9,7 +9,7 @@
   <body>
     <h1>Plateforme ARES</h1>
     <div class="login-container">
-      <form action="login.php" method="post">
+      <form action="login" method="post">
         <p>Login</p>
         <input class="login-inline input" type="text" name="login">
         <p>Mot de passe</p>
