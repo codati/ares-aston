@@ -14,7 +14,13 @@
 class Bdd {
 
   private static $bddInstence;
+  
+  /**
+   *
+   * @var PDO
+   */
   private $bdd;
+  
   private $config;
 
   function __construct() {
@@ -23,7 +29,10 @@ class Bdd {
 
     $this->bdd = new PDO('mysql:host=localhost;dbname=' . $this->config['bddName'], $this->config['user'], $this->config['password']);
   }
-
+/**
+ * 
+ * @return PDO
+ */
   static function getInstence() {
     if (!isset(self::$bddInstence)) {
       self::$bddInstence = new Bdd();
