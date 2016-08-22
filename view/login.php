@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Login</title>
     <link rel="stylesheet" href="css/styles.css">
-   <!-- <script src="script.js"></script>-->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
   <body>
     <h1>Plateforme ARES</h1>
@@ -22,5 +22,7 @@
         <button class="login-inline connection" type="submit">Se connecter</button>
       </form>
     </div>
+
+    <script src="js/jquery-3.1.0.js"></script>
   </body>
 </html>
