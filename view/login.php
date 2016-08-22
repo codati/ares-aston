@@ -5,21 +5,20 @@
     <title>Login</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
   </head>
   <body>
-    <h1>Plateforme ARES</h1>
+    <h1 class="main-title">Plateforme ARES</h1>
     <div class="login-container">
       <form action="login" method="post">
-        <p>Login</p>
-        <input class="login-inline input" type="text" name="login">
-        <p>Mot de passe</p>
-        <input class="login-inline input" type="password" name="password">
+        <input class="form-control input" type="text" name="login" placeholder="Identifiant">
+        <input class="form-control input" type="password" name="password" placeholder="Mot de passe">
         <p>Role utilisateur</p>
-        <select name="select" class="selectrole">
+        <select name="select" class="form-control">
           <option value="chefdeprojet">Chef de Projet</option> 
           <option value="utilisateur" selected>Utilisateur simple</option>
         </select>
-        <button class="login-inline connection" type="submit">Se connecter</button>
+        <button class="login-inline btn btn-success" type="submit">Se connecter</button>
       </form>
     </div>
 

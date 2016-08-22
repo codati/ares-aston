@@ -39,7 +39,7 @@ q:before, q:after {
 }
 table {
 	border-collapse: collapse;
-	border-spacing: 0;
+	/*border-spacing: 0;*/
 }
 
 button {
@@ -53,13 +53,27 @@ h1, p {
 	font-family: arial;
 }
 
+.main-title, .dash-title {
+	text-align: center;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  background-color: rgba(189, 195, 199,1.0) !important;
+}
+
 .login-container {
 	padding: 10px;
-	border: 2px solid darkgray;
-	border-radius: 10px;
-	width: 25%;
+	border: 2px solid rgba(39, 174, 96,1);
+	border-radius: 8px;
+	width: 35%;
 	margin-right: auto;
 	margin-left: auto;
+	background-color: rgba(39, 174, 96,0.5);
 }
 
 .login-inline {
@@ -80,8 +94,7 @@ h1, p {
 .selectrole {
 	border-radius: 15px;
 	border: 2px solid #2ecc71;
-	padding: 5px;
-	margin-top: 5px;
+	padding: 2px;
 }
 
 .connection {
@@ -89,3 +102,9 @@ h1, p {
 	border: 2px solid darkgray;
 	border-radius: 15px;
 }
+
+.edit {
+	text-align: center;
+}
+
+
