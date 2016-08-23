@@ -10,13 +10,20 @@ namespace Controller;
 
 class Tache {
 
-  function getView() {
+  function getViewAdd() {
     $data['utilisateurs'] = \Model\Utilisateur::getAll();
-    \Tools::renderView('addTache',$data);
+    \Tools::renderView('addTache', $data);
   }
+
   function add() {
     var_dump($_POST);
   }
-  
-  
+  function getViewEdit() {
+    $data['utilisateurs'] = \Model\Utilisateur::getAll();
+    \Tools::renderView('addTache', $data);
+  }
+  function edit() {
+    var_dump($_POST);
+  }
+
 }

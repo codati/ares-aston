@@ -44,10 +44,10 @@
             <td><?= $tache->getDescription() ?></td>
              <!-- <td>22/08/2016</td>-->
             <td class="edit"><a href="details?id=<?= $tache->getId() ?>"><i class="fa fa-info-circle details-icon"></i></a>
-            <?php if (isset($_SESSION['chefdeprojet'])) : ?>
-              <a href="edit?id=<?= $tache->getId() ?>"><i class="fa fa-pencil-square-o details-icon"></i></a></td>
-           <?php endif; ?>
-              </td>
+              <?php if (isset($_SESSION['chefdeprojet'])) : ?>
+                <a href="editTache?id=<?= $tache->getId() ?>"><i class="fa fa-pencil-square-o details-icon"></i></a></td>
+              <?php endif; ?>
+            </td>
           </tr>
         <?php endforeach; ?>
       </table> 
