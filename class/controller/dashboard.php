@@ -16,7 +16,27 @@ namespace Controller;
 class Dashboard {
 
   public function index() {
-    \Tools::renderView('dashboard');
+    $data['taches'] =  \Model\Tache::getAll();
+
+
+    \Tools::renderView('dashboard',$data);
+    
+//    
+//    $tache = new \Model\Tache();
+//    $tache->setTitre('test');
+//    $tache->setEtat('enCours');
+//    $tache->setTmpRealisation(10);
+//    $tache->setEcheance(time());
+//    $tache->setDescription('test');
+//    $tache->setId_utilisateur(1);
+//    $tache->save();
+//
+//
+//
+//    $tache = \Model\Tache::getbyId('1');
+//    $tache->setTitre('LOL');
+//    $tache->setTitre('the Description');
+//    $tache->save();
   }
 
 }
