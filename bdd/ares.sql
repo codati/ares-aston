@@ -30,7 +30,7 @@ CREATE TABLE `Tache` (
   `echeance` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `tmpRealisation` int(10) unsigned NOT NULL,
   `tmpReel` int(10) unsigned DEFAULT NULL,
-  `etat` enum('assignee','enCours','bloque','termine') NOT NULL,
+  `etat` enum('assignee','enCours','bloque','termine') NOT NULL DEFAULT 'assignee',
   PRIMARY KEY (`id`),
   KEY `id_utilisateur` (`id_utilisateur`),
   CONSTRAINT `Tache_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `Utilisateur` (`id`)
