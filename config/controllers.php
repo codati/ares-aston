@@ -16,4 +16,11 @@ $controller['GET']['/dashboard']['action'] = 'index';
 $controller['GET']['/details']['controller'] = 'Details';
 $controller['GET']['/details']['action'] = 'index';
 
+// addTache
+$controller['GET']['/addTache']['controller'] = 'tache';
+$controller['GET']['/addTache']['action'] = 'view';
+
+$controller['POST']['/addTache']['controller'] = 'tache';
+$controller['POST']['/addTache']['action'] = 'add';
+
 return $controller;
