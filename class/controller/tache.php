@@ -11,7 +11,8 @@ namespace Controller;
 class Tache {
 
   function getView() {
-    \Tools::renderView('addTache');
+    $data['utilisateurs'] = \Model\Utilisateur::getAll();
+    \Tools::renderView('addTache',$data);
   }
 
 }
