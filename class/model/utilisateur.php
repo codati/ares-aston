@@ -16,7 +16,47 @@ namespace Model;
 
 class Utilisateur {
 
-  private $id, $password, $login;
+  private $id, $password, $login, $lastName, $firstName;
+
+  function getId() {
+    return $this->id;
+  }
+
+  function getPassword() {
+    return $this->password;
+  }
+
+  function getLogin() {
+    return $this->login;
+  }
+
+  function getLastName() {
+    return $this->lastName;
+  }
+
+  function getFirstName() {
+    return $this->firstName;
+  }
+
+  private function setId($id) {
+    $this->id = $id;
+  }
+
+  function setPassword($password) {
+    $this->password = $password;
+  }
+
+  function setLogin($login) {
+    $this->login = $login;
+  }
+
+  function setLastName($lastname) {
+    $this->lastName = $lastname;
+  }
+
+  function setFirstName($firstname) {
+    $this->firstName = $firstname;
+  }
 
   static public function getUser($pass, $login) {
 
@@ -24,7 +64,7 @@ class Utilisateur {
     $query->bindParam('login', $login);
 
     $query->execute();
-    
+
     if ($query->rowCount() == 1) {
       $user = $query->fetchObject(__CLASS__);
 
@@ -37,4 +77,16 @@ class Utilisateur {
       return false;
     }
   }
+
+  public static function getById($id) {
+
+    $query = \Bdd::getInstence()->prepare('SELECT * FROM `Utilisateur` WHERE `id` = :id');
+    $query->bindParam('id', $id);
+
+    $query->execute();
+    $utilisateur = $query->fetchObject(__CLASS__);
+
+    return $utilisateur;
+  }
+
 }

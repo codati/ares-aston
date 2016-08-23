@@ -27,36 +27,20 @@
           <th>Echéance</th>
           <th>Assigné à</th>
           <th>Titre</th> 
-          <th>Date de création</th>
+         <!-- <th>Date de création</th>-->
           <th>Détails</th>
         </tr> 
-        <tr> 
-          <td>1</td>
-          <td>En cours</td>
-          <td>24/08/2016</td>
-          <td>Nom Prénom</td>
-          <td>Corriger un problème sur le site www.test.com</td>
-          <td>22/08/2016</td>
-          <td class="edit"><a href="#"><i class="fa fa-pencil-square-o"></i></a></td>
-        </tr>
-        <tr> 
-          <td>1</td>
-          <td>En cours</td>
-          <td>24/08/2016</td>
-          <td>Nom Prénom</td>
-          <td>Corriger un problème sur le site www.test.com</td>
-          <td>22/08/2016</td>
-          <td class="edit"><a href="#"><i class="fa fa-pencil-square-o"></i></a></td>
-        </tr>
-        <tr> 
-          <td>1</td>
-          <td>En cours</td>
-          <td>24/08/2016</td>
-          <td>Nom Prénom</td>
-          <td>Corriger un problème sur le site www.test.com</td>
-          <td>22/08/2016</td>
-          <td class="edit"><a href="#"><i class="fa fa-pencil-square-o"></i></a></td>
-        </tr> 
+        <?php foreach ($taches as $tache): ?>
+          <tr> 
+            <td><?= $tache->getId() ?></td>
+            <td><?= $tache->getEtat() ?></td>
+            <td><?= $tache->getEcheance() ?></td>
+            <td><?= $tache->getutilisateur()->getLastname() .' '. $tache->getutilisateur()->getFirstname()?></td>
+            <td><?= $tache->getDescription() ?></td>
+             <!-- <td>22/08/2016</td>-->
+            <td class="edit"><a href="#<?= $tache->getId() ?>"><i class="fa fa-pencil-square-o"></i></a></td>
+          </tr>
+        <?php endforeach; ?>
       </table> 
     </div>
 

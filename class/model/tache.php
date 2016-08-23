@@ -17,6 +17,7 @@ class Tache {
 
   private $id;
   private $id_utilisateur;
+  private $utilisateur;
   private $titre;
   private $description;
   private $echeance;
@@ -30,6 +31,14 @@ class Tache {
 
   function getId_utilisateur() {
     return $this->id_utilisateur;
+  }
+
+  function getUtilisateur() {
+
+    if (!isset($this->utilisateur)) {
+      $this->utilisateur = Utilisateur::getById($this->getId_utilisateur());
+    }
+    return $this->utilisateur;
   }
 
   function getTitre() {
@@ -95,21 +104,20 @@ class Tache {
     $query->execute();
     $taches = $query->fetchAll(\PDO::FETCH_CLASS, __CLASS__);
 
-    var_dump($taches);
     return $taches;
   }
 
-  public static function getbyId($id) {
+  public static function getById($id) {
 
     $query = \Bdd::getInstence()->prepare('SELECT * FROM `Tache` WHERE `id` = :id');
     $query->bindParam('id', $id);
 
     $query->execute();
-    $tache = $query->fetchObject( __CLASS__);
+    $tache = $query->fetchObject(__CLASS__);
 
-    var_dump($tache);
     return $tache;
   }
+
   public function update() {
 
     $query = \Bdd::getInstence()->prepare(
@@ -139,7 +147,7 @@ class Tache {
 
     $query = \Bdd::getInstence()->prepare(
             'INSERT INTO `Tache` (`id_utilisateur`, `titre`, `description`, `echeance`, `tmpRealisation`, `tmpReel`, `etat`) VALUES (:id_utilisateur, :titre, :description,:echeance, :tmpRealisation, :tmpReel, :etat);'
-    )or die(print_r(\Bdd::getInstence()->errorInfo(), true));
+            )or die(print_r(\Bdd::getInstence()->errorInfo(), true));
     $query->bindParam('description', $this->getDescription());
     $query->bindParam('echeance', $this->getEcheance());
     $query->bindParam('etat', $this->getEtat());
@@ -147,8 +155,8 @@ class Tache {
     $query->bindParam('titre', $this->getTitre());
     $query->bindParam('tmpRealisation', $this->getTmpRealisation());
     $query->bindParam('tmpReel', $this->getTmpReel());
-    var_dump($query);
-    $query->execute()  or die(print_r($query->errorInfo(), true));
+
+    $query->execute() or die(print_r($query->errorInfo(), true));
 
 
     $this->setId(\Bdd::getInstence()->lastInsertId());
