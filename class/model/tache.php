@@ -116,11 +116,11 @@ class Tache extends \Model {
   public function insert() {
 
     $query = \Bdd::getInstence()->prepare(
-            'INSERT INTO `Tache` (`id_utilisateur`, `titre`, `description`, `echeance`, `tmpRealisation`, `tmpReel`, `etat`) VALUES (:id_utilisateur, :titre, :description,:echeance, :tmpRealisation, :tmpReel, :etat);'
+            'INSERT INTO `Tache` (`id_utilisateur`, `titre`, `description`, `echeance`, `tmpRealisation`, `tmpReel`) VALUES (:id_utilisateur, :titre, :description,:echeance, :tmpRealisation, :tmpReel);'
             )or die(print_r(\Bdd::getInstence()->errorInfo(), true));
     $query->bindParam('description', $this->getDescription());
     $query->bindParam('echeance', $this->getEcheance());
-    $query->bindParam('etat', $this->getEtat());
+  //  $query->bindParam('etat', $this->getEtat());
     $query->bindParam('id_utilisateur', $this->getId_utilisateur());
     $query->bindParam('titre', $this->getTitre());
     $query->bindParam('tmpRealisation', $this->getTmpRealisation());
