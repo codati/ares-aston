@@ -166,6 +166,12 @@ table {
 @media (max-width: 995px) { 
 	.chrono-container {
 		float: none !important;
+		margin-left: 10px;
+		margin-bottom: 10px;
+	}
+
+	.detail-container {
+		margin-right: 10px;
 	}
 }
 
@@ -244,7 +250,11 @@ a {
 	width: 80%;
 }
 
-#minutes, #secondes, #dixiemes {
-display: inline;
-	width: 100px;
+#secondes, #minutes, #heures, .separator, .separator-s {
+	display: inline-block;
+	font-size: 8em;
+}
+
+#secondes, .separator-s {
+	font-size: 4em;
 }

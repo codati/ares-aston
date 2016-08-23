@@ -34,7 +34,7 @@
     <div class="chrono-container col-md-6">
       <h2>Temps écoulé :</h2>
       <div class="container-btn">
-        <p id="minutes">00</p>:<p id="secondes">00</p>:<p id="dixiemes">00</p><br>
+        <p id="heures">00</p><p class="separator">:</p><p id="minutes">00</p><p class="separator-s">:</p><p id="secondes">00</p><br>
         <button class="btn btn-chrono btn-primary" id="btn-play"><i class="fa fa-play-circle-o"></i></button>
         <button class="btn btn-chrono btn-danger" id="btn-pause"><i class="fa fa-pause-circle-o"></i></button>
         <button class="btn btn-success btn-chrono" id="btn-stop"><i class="fa fa-stop-circle-o"></i></button>
