@@ -42,11 +42,13 @@ CREATE TABLE `Utilisateur` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `login` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `firstName` varchar(255) NOT NULL,
+  `lastName` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 TRUNCATE `Utilisateur`;
-INSERT INTO `Utilisateur` (`id`, `login`, `password`) VALUES
-(1,	'test',	'$2y$10$pTEmeZu2dtDstB0v.7wSTOwWVZlNCNMK74WnGJod57RoNiDeGgLyS');
+INSERT INTO `Utilisateur` (`id`, `login`, `password`, `firstName`, `lastName`) VALUES
+(1,	'test',	'$2y$10$pTEmeZu2dtDstB0v.7wSTOwWVZlNCNMK74WnGJod57RoNiDeGgLyS',	'prenom',	'nom');
 
--- 2016-08-23 07:56:23
+-- 2016-08-23 08:06:53
