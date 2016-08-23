@@ -16,8 +16,7 @@ class Tache {
   }
 
   function add() {
-  
-
+    
     $tache = new \Model\Tache();
     $tache->setTitre($_POST['titre']);
     $tache->setDescription($_POST['description']);
@@ -33,7 +32,8 @@ class Tache {
 
   function getViewEdit() {
     $data['utilisateurs'] = \Model\Utilisateur::getAll();
-    \Tools::renderView('addTache', $data);
+    $data['tache'] = \Model\Tache::getById($_GET['id']);
+    \Tools::renderView('updateTache', $data);
   }
 
   function edit() {
