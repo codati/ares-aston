@@ -14,7 +14,7 @@
 
 namespace Model;
 
-class Utilisateur {
+class Utilisateur extends \Model {
 
   private $id, $password, $login, $lastName, $firstName;
 
@@ -77,16 +77,4 @@ class Utilisateur {
       return false;
     }
   }
-
-  public static function getById($id) {
-
-    $query = \Bdd::getInstence()->prepare('SELECT * FROM `Utilisateur` WHERE `id` = :id');
-    $query->bindParam('id', $id);
-
-    $query->execute();
-    $utilisateur = $query->fetchObject(__CLASS__);
-
-    return $utilisateur;
-  }
-
 }

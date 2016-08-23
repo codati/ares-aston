@@ -13,7 +13,7 @@ namespace Model;
  *
  * @author codati
  */
-class Tache {
+class Tache extends \Model {
 
   private $id;
   private $id_utilisateur;
@@ -24,10 +24,6 @@ class Tache {
   private $tmpRealisation;
   private $tmpReel;
   private $etat;
-
-  function getId() {
-    return $this->id;
-  }
 
   function getId_utilisateur() {
     return $this->id_utilisateur;
@@ -65,10 +61,6 @@ class Tache {
     return $this->etat;
   }
 
-  private function setId($id) {
-    $this->id = $id;
-  }
-
   function setId_utilisateur($id_utilisateur) {
     $this->id_utilisateur = $id_utilisateur;
   }
@@ -95,27 +87,6 @@ class Tache {
 
   function setEtat($etat) {
     $this->etat = $etat;
-  }
-
-  public static function getAll() {
-
-    $query = \Bdd::getInstence()->prepare('SELECT * FROM `Tache`');
-
-    $query->execute();
-    $taches = $query->fetchAll(\PDO::FETCH_CLASS, __CLASS__);
-
-    return $taches;
-  }
-
-  public static function getById($id) {
-
-    $query = \Bdd::getInstence()->prepare('SELECT * FROM `Tache` WHERE `id` = :id');
-    $query->bindParam('id', $id);
-
-    $query->execute();
-    $tache = $query->fetchObject(__CLASS__);
-
-    return $tache;
   }
 
   public function update() {

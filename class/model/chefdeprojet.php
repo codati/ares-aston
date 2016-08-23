@@ -13,7 +13,7 @@
  */
 
 namespace Model;
-class ChefDeProjet {
+class ChefDeProjet extends \Model {
 
   private $id, $password, $login;
 
