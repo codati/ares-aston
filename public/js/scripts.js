@@ -1,27 +1,17 @@
-$(document).ready(function(){
-	$("#btn-pause").attr("disabled", "disabled");
-	$("#btn-stop").attr("disabled", "disabled");
-});
-
-$("#btn-play").click(function(){
-	$("#select-state").val("encours");
-	$("#btn-play").attr("disabled", "disabled");
-	$("#btn-pause").removeAttr("disabled", "disabled");
-	$("#btn-stop").removeAttr("disabled", "disabled");
-});
-
-$("#btn-pause").click(function(){
-	$("#select-state").val("bloque");
-	$("#btn-play").removeAttr("disabled");
-});
-
-$("#btn-stop").click(function(){
-	$("#select-state").val("termine");
-	$("#btn-play").removeAttr("disabled");
-});
-
 function blinker() {
     $('.negatif').fadeOut(500).fadeIn(500);
 }
  
 setInterval(blinker, 3000);
+
+
+// request permission on page load
+document.addEventListener('DOMContentLoaded', function () {
+  if (!Notification) {
+    alert('Desktop notifications not available in your browser. Try Chromium.'); 
+    return;
+  }
+
+  if (Notification.permission !== "granted")
+    Notification.requestPermission();
+});

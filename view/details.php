@@ -33,11 +33,10 @@
       <h2>Description :</h2>
       <p class="description-text"><?= $tache->getDescription(); ?>.</p>
     </div>
-
     <div class="chrono-container col-md-6">
       <h2>Temps écoulé :</h2>
       <div class="container-btn">
-        <div ng-class="{ negatif :timeChrono.total < 0 }">
+        <div id="div-chrono" ng-class="{ negatif :timeChrono.total < 0 }">
           <span class ="operateur" ng-show="timeChrono.total < 0"> - </span> <p id="heures">{{ timeChrono.h }}</p><p class="separator">:</p><p id="minutes">{{ timeChrono.m }}</p><p class="separator-s">:</p><p id="secondes">{{ timeChrono.s }}</p>
         </div><br>
         <button class="btn btn-chrono btn-primary" id="btn-play"><i class="fa fa-play-circle-o"></i></button>
@@ -96,16 +95,31 @@
 
                   } else {
                     $scope.timeChrono.m = Math.floor($scope.timeChrono.total / 60) % 60;
-                    $scope.timeChrono.m = $scope.timeChrono.m > 0 ? 0 + '' + $scope.timeChrono.m : $scope.timeChrono.m;
                     $scope.timeChrono.h = Math.floor($scope.timeChrono.total / 3600);
 
                   }
                   $scope.timeChrono.m = $scope.timeChrono.m < 10 ? 0 + '' + $scope.timeChrono.m : $scope.timeChrono.m;
                   $scope.timeChrono.h = $scope.timeChrono.h < 10 ? 0 + '' + $scope.timeChrono.h : $scope.timeChrono.h;
 
+                  if($scope.timeChrono.total === 0){
+                    notifyMe();
+                  }
+
                   $scope.timeChrono.total--;
 
                 }
+
+                function notifyMe() {
+                  if (Notification.permission !== "granted")
+                    Notification.requestPermission();
+                  else {
+                    var notification = new Notification('Dépassement du temps', {
+                      icon: 'images/logo.jpg',
+                      body: "Avez vous un soucis ? Demandez de l'aide !",
+                    });
+                  }
+                }
+
               });
 
 
