@@ -39,91 +39,92 @@
         <div id="div-chrono" ng-class="{ negatif :timeChrono.total < 0 }">
           <span class ="operateur" ng-show="timeChrono.total < 0"> - </span> <p id="heures">{{ timeChrono.h }}</p><p class="separator">:</p><p id="minutes">{{ timeChrono.m }}</p><p class="separator-s">:</p><p id="secondes">{{ timeChrono.s }}</p>
         </div><br>
-        <button class="btn btn-chrono btn-primary" id="btn-play"><i class="fa fa-play-circle-o"></i></button>
-        <button class="btn btn-chrono btn-danger" id="btn-pause"><i class="fa fa-pause-circle-o"></i></button>
-        <button class="btn btn-success btn-chrono" id="btn-stop"><i class="fa fa-stop-circle-o"></i></button>
+        <button class="btn btn-chrono btn-primary" id="btn-play" ng-click="status = 'enCours'"><i class="fa fa-play-circle-o"></i></button>
+        <button class="btn btn-chrono btn-danger" id="btn-pause" ng-click="status = 'bloque'"><i class="fa fa-pause-circle-o"></i></button>
+        <button class="btn btn-success btn-chrono" id="btn-stop" ng-click="status = 'termine'"><i class="fa fa-stop-circle-o"></i></button>
+
+        <hr>
+        <h2 class="state">Statut :</h2>
+        <select name="type" id="select-state" class="form-control state-control" ng-model="status">
+          <option disabled value="assignee">Assigné</option>
+          <option id="st-play" value="enCours" >En cours</option>
+          <option id="st-pause" value="bloque" >Bloqué</option>
+          <option id="st-stop" value="termine" >Terminé</option>
+        </select>
       </div>
 
-      <hr>
-      <h2 class="state">Statut :</h2>
-      <select name="type" id="select-state" class="form-control state-control">
-        <option <?= $tache->getEtat() == 'assigne' ? 'selected' : '' ?> value="assigne">Assigné</option>
-        <option id="st-play" <?= $tache->getEtat() == 'encours' ? 'selected' : '' ?> value="encours">En cours</option>
-        <option id="st-pause" <?= $tache->getEtat() == 'bloque' ? 'selected' : '' ?> value="bloque" >Bloqué</option>
-        <option id="st-stop" <?= $tache->getEtat() == 'termine' ? 'selected' : '' ?> value="termine" >Terminé</option>
-      </select>
-
-    </div>
-
-    <script src="js/jquery-3.1.0.js"></script>
-    <script src="js/scripts.js"></script>
 
 
-    <script type="text/javascript">
+      <script type="text/javascript">
 
-      angular.module('ares', [])
-              .controller('details', function ($scope, $interval) {
+        angular.module('ares', [])
+                .controller('details', function ($scope, $interval, $http) {
+                  $scope.status = '<?= $tache->getEtat() ?>';
 
-                console.log('test');
-                $scope.timeChrono = [];
-                $scope.timeChrono.total = <?= $tache->getTmpRealisation(); ?> * 60;
+                  $scope.timeChrono = [];
+                  $scope.timeChrono.total = <?= $tache->getTmpRealisation(); ?> * 60;
+                  var h = Math.floor(<?= $tache->getTmpRealisation(); ?> / 60);
+                  var m = <?= $tache->getTmpRealisation(); ?> % 60;
+                  h = h < 10 ? '0' + h : h;
+                  m = m < 10 ? '0' + m : m;
+                  $scope.time = h + ':' + m;
+                  $interval(chrono, 1000);
+                  chrono();
+                  $scope.$watch('status', function (etat) {
+                    $http.post('statusChange', {idTache:<?= $tache->getId(); ?>, etat: etat});
 
+                  });
 
-                var h = Math.floor(<?= $tache->getTmpRealisation(); ?> / 60);
-
-                var m = <?= $tache->getTmpRealisation(); ?> % 60;
-                h = h < 10 ? '0' + h : h;
-                m = m < 10 ? '0' + m : m;
-                $scope.time = h + ':' + m;
-
-                $interval(chrone, 1000);
-
-                chrone();
-
-
-                function chrone() {
+                  function chrono() {
 
 
 
-                  $scope.timeChrono.s = Math.abs($scope.timeChrono.total % 60);
-                  $scope.timeChrono.s = $scope.timeChrono.s < 10 ? 0 + '' + $scope.timeChrono.s : $scope.timeChrono.s;
 
-                  if ($scope.timeChrono.total < 0)
-                  {
-                    $scope.timeChrono.m = Math.abs(Math.ceil($scope.timeChrono.total / 60) % 60);
-                    $scope.timeChrono.h = Math.abs(Math.ceil($scope.timeChrono.total / 3600));
 
-                  } else {
-                    $scope.timeChrono.m = Math.floor($scope.timeChrono.total / 60) % 60;
-                    $scope.timeChrono.h = Math.floor($scope.timeChrono.total / 3600);
+
+                    $scope.timeChrono.s = Math.abs($scope.timeChrono.total % 60);
+
+                    if ($scope.timeChrono.total < 0)
+                    {
+                      $scope.timeChrono.m = Math.abs(Math.ceil($scope.timeChrono.total / 60) % 60);
+                      $scope.timeChrono.h = Math.abs(Math.ceil($scope.timeChrono.total / 3600));
+
+                    } else {
+                      $scope.timeChrono.m = Math.floor($scope.timeChrono.total / 60) % 60;
+                      $scope.timeChrono.h = Math.floor($scope.timeChrono.total / 3600);
+
+                    }
+                    $scope.timeChrono.s = $scope.timeChrono.s < 10 ? 0 + '' + $scope.timeChrono.s : $scope.timeChrono.s;
+                    $scope.timeChrono.m = $scope.timeChrono.m < 10 ? 0 + '' + $scope.timeChrono.m : $scope.timeChrono.m;
+                    $scope.timeChrono.h = $scope.timeChrono.h < 10 ? 0 + '' + $scope.timeChrono.h : $scope.timeChrono.h;
+
+                    if ($scope.timeChrono.total === 0) {
+                      notifyMe();
+                    }
+
+                    if ($scope.status === 'enCours')
+                    {
+                      $scope.timeChrono.total--;
+                    }
 
                   }
-                  $scope.timeChrono.m = $scope.timeChrono.m < 10 ? 0 + '' + $scope.timeChrono.m : $scope.timeChrono.m;
-                  $scope.timeChrono.h = $scope.timeChrono.h < 10 ? 0 + '' + $scope.timeChrono.h : $scope.timeChrono.h;
 
-                  if($scope.timeChrono.total === 0){
-                    notifyMe();
+                  function notifyMe() {
+                    if (Notification.permission !== "granted")
+                      Notification.requestPermission();
+                    else {
+                      var notification = new Notification('Dépassement du temps', {
+                        icon: 'images/logo.jpg',
+                        body: "Avez vous un soucis ? Demandez de l'aide !",
+                      });
+                    }
                   }
 
-                  $scope.timeChrono.total--;
-
-                }
-
-                function notifyMe() {
-                  if (Notification.permission !== "granted")
-                    Notification.requestPermission();
-                  else {
-                    var notification = new Notification('Dépassement du temps', {
-                      icon: 'images/logo.jpg',
-                      body: "Avez vous un soucis ? Demandez de l'aide !",
-                    });
-                  }
-                }
-
-              });
+                });
 
 
-    </script>
+
+      </script>
 
   </body>
 </html>

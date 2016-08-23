@@ -29,6 +29,7 @@ $controller['GET']['/editTache']['action'] = 'getViewEdit';
 $controller['POST']['/editTache']['controller'] = 'tache';
 $controller['POST']['/editTache']['action'] = 'edit';
 
-
+$controller['POST']['/statusChange']['controller'] = 'tache';
+$controller['POST']['/statusChange']['action'] = 'statusChange';
 
 return $controller;

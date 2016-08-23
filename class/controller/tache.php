@@ -40,4 +40,13 @@ class Tache {
     var_dump($_POST);
   }
 
+  function statusChange() {
+    $inputJSON = file_get_contents('php://input');
+    $input = json_decode($inputJSON, TRUE); //convert JSON into array
+    var_dump($input);
+    $tache = \Model\Tache::getById($input['idTache']);
+    $tache->setEtat($input['etat']);
+    $tache->save();
+  }
+
 }
