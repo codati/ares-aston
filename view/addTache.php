@@ -21,19 +21,25 @@
     
     <div class="form-container">
       <form action="addTache" method="post">
-        <input class="form-control input" type="text" name="titre" placeholder="Titre">
+        <input class="form-control input" type="text" name="titre" placeholder="Titre" required>
         <p>Description détaillé de la demande : </p>
-        <textarea  placeholder="Description" cols="87" rows="8" maxlength="88">
+        <textarea  class="form-control" placeholder="Description" cols="87" rows="8" maxlength="88" required>
         </textarea><br>
+
         <p>Date d'échéance : </p>
-        <input type="date" name="echeance" class="echeance"><input type="time" name="hour"><br>
+        <input class="form-control" type="date" name="echeance" class="echeance" required><br>
+        <p>à quelle heure ? (si nécessaire)</p>
+        <input class="form-control" type="time" name="hour"><br>
+
         <p>Temps prévisionel (en minute) : </p>
-        <input type="number" name="tmp-prevision" min="0" step="5"><br>
+        <input class="form-control" type="number" name="tmp-prevision" min="0" step="5" required><br>
+
         <p>Assigné à :</p>
-        <select>
+        <select class="form-control" required>
           <option value="nomprenom">Nom Prénom</option>
           <option value="nomprenom">Nom Prénom</option> 
         </select><br>
+
         <button class="login-inline btn btn-success" type="submit">Créer la demande</button>
       </form>
     </div>
