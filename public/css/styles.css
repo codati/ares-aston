@@ -243,3 +243,8 @@ a {
 .form-container {
 	width: 80%;
 }
+
+#minutes, #secondes, #dixiemes {
+display: inline;
+	width: 100px;
+}

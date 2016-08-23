@@ -33,23 +33,25 @@
 
     <div class="chrono-container col-md-6">
       <h2>Temps écoulé :</h2>
-        <div class="container-btn">
-        <p class="chrono">00:00:00</p>
-        <button class="btn btn-chrono btn-primary"><i class="fa fa-play-circle-o"></i></button>
-        <button class="btn btn-chrono btn-danger"><i class="fa fa-pause-circle-o"></i></button>
-        <button class="btn btn-success btn-chrono"><i class="fa fa-stop-circle-o"></i></button>
+      <div class="container-btn">
+        <p id="minutes">00</p>:<p id="secondes">00</p>:<p id="dixiemes">00</p><br>
+        <button class="btn btn-chrono btn-primary" id="btn-play"><i class="fa fa-play-circle-o"></i></button>
+        <button class="btn btn-chrono btn-danger" id="btn-pause"><i class="fa fa-pause-circle-o"></i></button>
+        <button class="btn btn-success btn-chrono" id="btn-stop"><i class="fa fa-stop-circle-o"></i></button>
       </div>
+
       <hr>
       <h2 class="state">Statut :</h2>
-      <select name="type" class="form-control state-control">
+      <select name="type" id="select-state" class="form-control state-control">
         <option <?= $tache->getEtat() == 'assigne' ? 'selected' : '' ?> value="assigne">Assigné</option>
-        <option <?= $tache->getEtat() == 'encours' ? 'selected' : '' ?> value="encours">En cours</option>
-        <option <?= $tache->getEtat() == 'bloque' ? 'selected' : '' ?> value="bloque" >Bloqué</option>
-        <option <?= $tache->getEtat() == 'termine' ? 'selected' : '' ?> value="termine" >Terminé</option>
+        <option id="st-play" <?= $tache->getEtat() == 'encours' ? 'selected' : '' ?> value="encours">En cours</option>
+        <option id="st-pause" <?= $tache->getEtat() == 'bloque' ? 'selected' : '' ?> value="bloque" >Bloqué</option>
+        <option id="st-stop" <?= $tache->getEtat() == 'termine' ? 'selected' : '' ?> value="termine" >Terminé</option>
       </select>
 
     </div>
 
     <script src="js/jquery-3.1.0.js"></script>
+    <script src="js/scripts.js"></script>
   </body>
 </html>
