@@ -15,7 +15,6 @@ namespace Model;
  */
 class Tache extends \Model {
 
-  private $id;
   private $id_utilisateur;
   private $utilisateur;
   private $titre;

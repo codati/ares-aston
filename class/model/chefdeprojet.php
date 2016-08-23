@@ -15,7 +15,7 @@
 namespace Model;
 class ChefDeProjet extends \Model {
 
-  private $id, $password, $login;
+  private $password, $login;
 
   static public function getChefDeProjet($pass, $login) {
 

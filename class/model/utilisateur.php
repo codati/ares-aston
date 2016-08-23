@@ -16,11 +16,8 @@ namespace Model;
 
 class Utilisateur extends \Model {
 
-  private $id, $password, $login, $lastName, $firstName;
+  private $password, $login, $lastName, $firstName;
 
-  function getId() {
-    return $this->id;
-  }
 
   function getPassword() {
     return $this->password;
@@ -36,10 +33,6 @@ class Utilisateur extends \Model {
 
   function getFirstName() {
     return $this->firstName;
-  }
-
-  private function setId($id) {
-    $this->id = $id;
   }
 
   function setPassword($password) {

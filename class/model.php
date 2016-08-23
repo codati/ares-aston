@@ -12,7 +12,9 @@
  * @author codati
  */
 class Model {
-  private function setId($id) {
+  protected $id;
+  
+  protected function setId($id) {
     $this->id = $id;
   }
   
@@ -36,7 +38,7 @@ class Model {
     $query->execute();
     $objects = $query->fetchAll(\PDO::FETCH_CLASS, self::getClassName());
 
-    return $taches;
+    return $objects;
   }
 
   public static function getById($id) {
@@ -45,9 +47,9 @@ class Model {
     $query->bindParam('id', $id);
 
     $query->execute();
-    $tache = $query->fetchObject(self::getClassName());
+    $object = $query->fetchObject(self::getClassName());
 
-    return $tache;
+    return $object;
   }
 
 }
