@@ -30,12 +30,23 @@ CREATE TABLE `Tache` (
   `echeance` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `tmpRealisation` int(10) unsigned NOT NULL,
   `tmpReel` int(10) unsigned DEFAULT NULL,
-  `etat` enum('assignee','enCours','termine') NOT NULL,
+  `etat` enum('assignee','enCours','bloque','termine') NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_utilisateur` (`id_utilisateur`),
   CONSTRAINT `Tache_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `Utilisateur` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
+TRUNCATE `Tache`;
+INSERT INTO `Tache` (`id`, `id_utilisateur`, `titre`, `description`, `echeance`, `tmpRealisation`, `tmpReel`, `etat`) VALUES
+(1,	1,	'the Description',	'test',	'2016-08-23 07:26:28',	1,	1,	'assignee'),
+(2,	1,	'test',	'test',	'2016-08-23 07:33:38',	1,	1,	'assignee'),
+(3,	1,	'test',	'test',	'0000-00-00 00:00:00',	10,	NULL,	'enCours'),
+(4,	1,	'test',	'test',	'0000-00-00 00:00:00',	10,	NULL,	'enCours'),
+(5,	1,	'the Description',	'test',	'0000-00-00 00:00:00',	10,	NULL,	'enCours'),
+(6,	1,	'the Description',	'test',	'0000-00-00 00:00:00',	10,	NULL,	'enCours'),
+(7,	1,	'the Description',	'test',	'0000-00-00 00:00:00',	10,	NULL,	'enCours'),
+(8,	1,	'test',	'test',	'0000-00-00 00:00:00',	10,	NULL,	'enCours'),
+(9,	1,	'test',	'test',	'0000-00-00 00:00:00',	10,	NULL,	'enCours');
 
 DROP TABLE IF EXISTS `Utilisateur`;
 CREATE TABLE `Utilisateur` (
@@ -51,4 +62,4 @@ TRUNCATE `Utilisateur`;
 INSERT INTO `Utilisateur` (`id`, `login`, `password`, `firstName`, `lastName`) VALUES
 (1,	'test',	'$2y$10$pTEmeZu2dtDstB0v.7wSTOwWVZlNCNMK74WnGJod57RoNiDeGgLyS',	'prenom',	'nom');
 
--- 2016-08-23 08:06:53
+-- 2016-08-23 08:59:17
