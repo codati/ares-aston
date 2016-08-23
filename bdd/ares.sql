@@ -24,16 +24,18 @@ INSERT INTO `ChefDeProjet` (`id`, `login`, `password`) VALUES
 DROP TABLE IF EXISTS `Tache`;
 CREATE TABLE `Tache` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_utilisateur` int(10) unsigned NOT NULL,
   `titre` varchar(255) NOT NULL,
-  `description` int(11) NOT NULL,
+  `description` text NOT NULL,
   `echeance` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `tmpRealisation` int(10) unsigned NOT NULL,
-  `tmpReel` int(10) unsigned NOT NULL,
+  `tmpReel` int(10) unsigned DEFAULT NULL,
   `etat` enum('assignee','enCours','termine') NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`),
+  KEY `id_utilisateur` (`id_utilisateur`),
+  CONSTRAINT `Tache_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `Utilisateur` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
-TRUNCATE `Tache`;
 
 DROP TABLE IF EXISTS `Utilisateur`;
 CREATE TABLE `Utilisateur` (
@@ -47,16 +49,4 @@ TRUNCATE `Utilisateur`;
 INSERT INTO `Utilisateur` (`id`, `login`, `password`) VALUES
 (1,	'test',	'$2y$10$pTEmeZu2dtDstB0v.7wSTOwWVZlNCNMK74WnGJod57RoNiDeGgLyS');
 
-DROP TABLE IF EXISTS `Utilisateur-Tache`;
-CREATE TABLE `Utilisateur-Tache` (
-  `id_tache` int(10) unsigned NOT NULL,
-  `id_utilisateur` int(10) unsigned NOT NULL,
-  KEY `id_tache` (`id_tache`),
-  KEY `id_utilisateur` (`id_utilisateur`),
-  CONSTRAINT `Utilisateur-Tache_ibfk_1` FOREIGN KEY (`id_tache`) REFERENCES `Tache` (`id`),
-  CONSTRAINT `Utilisateur-Tache_ibfk_2` FOREIGN KEY (`id_utilisateur`) REFERENCES `Utilisateur` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-TRUNCATE `Utilisateur-Tache`;
-
--- 2016-08-22 10:41:29
+-- 2016-08-23 07:56:23
