@@ -8,7 +8,17 @@
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
   </head>
   <body>
-    <h1 class="main-title">Plateforme ARES</h1>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            <img alt="Ares" class="logo-a" src="images/logo.jpg">
+          </a>
+        </div>
+        <h1 class="main-title">Plateforme ARES</h1>
+      </div>
+    </nav>
+    
     <div class="login-container">
       <form action="login" method="post">
         <input class="form-control input" type="text" name="login" placeholder="Identifiant" value="<?= $login ?>">

@@ -12,5 +12,8 @@ $controller['POST']['/login']['action'] = 'connect';
 $controller['GET']['/dashboard']['controller'] = 'Dashboard';
 $controller['GET']['/dashboard']['action'] = 'index';
 
+// details
+$controller['GET']['/details']['controller'] = 'Details';
+$controller['GET']['/details']['action'] = 'index';
 
 return $controller;
