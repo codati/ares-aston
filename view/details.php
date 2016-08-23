@@ -16,18 +16,19 @@
           </a>
         </div>
         <h1 class="dash-title">Détails d'une demande</h1>
+        <a href="/"><div class="logout"><i class="fa fa-sign-out"></i></div></a>
       </div>
     </nav>
 
     <div class="detail-container col-md-5">
       <h2>Titre :</h2>
-      <p class="title-details">Titre de la demande</p>
+      <p class="title-details"><?= $tache->getTitre();?></p> 
       <hr>
       <h2>Temps estimé :</h2>
-      <p>1:50</p>
+      <p><?= $tache->getTmpRealisation();?></p>
       <hr>
       <h2>Description :</h2>
-      <p class="description-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec consectetur urna non tellus feugiat sodales. Quisque diam mauris, luctus ac libero sit amet, elementum vehicula metus. Mauris neque mi, dignissim quis elit eget, porta iaculis neque. Suspendisse potenti. Quisque tempus lacinia odio quis aliquam. Phasellus condimentum turpis et ipsum mattis sollicitudin. Duis ac gravida mauris, sit amet suscipit lorem. Fusce varius dolor ac felis tristique cursus.</p>
+      <p class="description-text"><?= $tache->getDescription();?>.</p>
     </div>
 
     <div class="chrono-container col-md-6">
@@ -41,10 +42,10 @@
       <hr>
       <h2 class="state">Statut :</h2>
       <select name="type" class="form-control state-control">
-        <option value="assigne">Assigné</option>
-        <option value="encours">En cours</option>
-        <option value="bloque" >Bloqué</option>
-        <option value="termine" >Terminé</option>
+        <option <?= $tache->getEtat() == 'assigne' ? 'selected' : '' ?> value="assigne">Assigné</option>
+        <option <?= $tache->getEtat() == 'encours' ? 'selected' : '' ?> value="encours">En cours</option>
+        <option <?= $tache->getEtat() == 'bloque' ? 'selected' : '' ?> value="bloque" >Bloqué</option>
+        <option <?= $tache->getEtat() == 'termine' ? 'selected' : '' ?> value="termine" >Terminé</option>
       </select>
 
     </div>

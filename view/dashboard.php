@@ -16,6 +16,7 @@
           </a>
         </div>
         <h1 class="dash-title">Liste des demandes</h1>
+        <div><i class="fa fa-sign-out"></i></div>
         <?php if (isset($_SESSION['chefdeprojet'])) : ?>
           <a href="addTache"><i class="fa fa-pencil-square-o"></i></a>
         <?php endif; ?>

@@ -68,13 +68,13 @@ body {
 
 .login-container {
 	padding: 10px;
-	border: 2px solid rgba(39, 174, 96,1);
+	border: 2px solid rgba(243, 156, 18,1.0);
 	border-radius: 8px;
 	width: 25%;
 	min-width: 300px;
 	margin-right: auto;
 	margin-left: auto;
-	background-color: rgba(39, 174, 96,0.5);
+	background-color: rgba(236, 240, 241,1.0);
 }
 
 .login-inline {
@@ -183,4 +183,21 @@ table {
 
 .state-control {
 	margin-bottom: 15px;
+}
+
+.logout {
+	float: right;
+	font-size: 2.1em !important;
+	margin-top: -50px;
+	margin-bottom: 5px;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	border-radius: 30px;
+	background-color: darkgray;
+	color: white;
+}
+
+a {
+	text-decoration: none;
 }
