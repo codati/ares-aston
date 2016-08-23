@@ -16,6 +16,9 @@ class Login {
     } else {
       \Tools::renderView('login');
     }
+    
+    unset( $_SESSION['chefdeprojet']);
+    unset( $_SESSION['utilisateur']);
   }
 
   function connect() {
