@@ -16,7 +16,7 @@ class Tache {
   }
 
   function add() {
-    var_dump($_POST);
+  
 
     $tache = new \Model\Tache();
     $tache->setTitre($_POST['titre']);
@@ -25,6 +25,10 @@ class Tache {
     $tache->setTmpRealisation($_POST['tmp-prevision']);
     $tache->setId_utilisateur($_POST['utilisateur']);
     $tache->save();
+    
+    
+    header('Location: dashboard');
+
   }
 
   function getViewEdit() {
