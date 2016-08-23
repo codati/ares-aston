@@ -52,79 +52,75 @@
           <option id="st-stop" value="termine" >Terminé</option>
         </select>
       </div>
+    </div>
 
+    <script type="text/javascript" src="js/scripts.js"></script>
 
+    <script type="text/javascript">
 
-      <script type="text/javascript">
+      angular.module('ares', [])
+              .controller('details', function ($scope, $interval, $http) {
+                $scope.status = '<?= $tache->getEtat() ?>';
 
-        angular.module('ares', [])
-                .controller('details', function ($scope, $interval, $http) {
-                  $scope.status = '<?= $tache->getEtat() ?>';
-
-                  $scope.timeChrono = [];
-                  $scope.timeChrono.total = <?= $tache->getTmpRealisation(); ?> * 60;
-                  var h = Math.floor(<?= $tache->getTmpRealisation(); ?> / 60);
-                  var m = <?= $tache->getTmpRealisation(); ?> % 60;
-                  h = h < 10 ? '0' + h : h;
-                  m = m < 10 ? '0' + m : m;
-                  $scope.time = h + ':' + m;
-                  $interval(chrono, 1000);
-                  chrono();
-                  $scope.$watch('status', function (etat) {
-                    $http.post('statusChange', {idTache:<?= $tache->getId(); ?>, etat: etat});
-
-                  });
-
-                  function chrono() {
-
-
-
-
-
-
-                    $scope.timeChrono.s = Math.abs($scope.timeChrono.total % 60);
-
-                    if ($scope.timeChrono.total < 0)
-                    {
-                      $scope.timeChrono.m = Math.abs(Math.ceil($scope.timeChrono.total / 60) % 60);
-                      $scope.timeChrono.h = Math.abs(Math.ceil($scope.timeChrono.total / 3600));
-
-                    } else {
-                      $scope.timeChrono.m = Math.floor($scope.timeChrono.total / 60) % 60;
-                      $scope.timeChrono.h = Math.floor($scope.timeChrono.total / 3600);
-
-                    }
-                    $scope.timeChrono.s = $scope.timeChrono.s < 10 ? 0 + '' + $scope.timeChrono.s : $scope.timeChrono.s;
-                    $scope.timeChrono.m = $scope.timeChrono.m < 10 ? 0 + '' + $scope.timeChrono.m : $scope.timeChrono.m;
-                    $scope.timeChrono.h = $scope.timeChrono.h < 10 ? 0 + '' + $scope.timeChrono.h : $scope.timeChrono.h;
-
-                    if ($scope.timeChrono.total === 0) {
-                      notifyMe();
-                    }
-
-                    if ($scope.status === 'enCours')
-                    {
-                      $scope.timeChrono.total--;
-                    }
-
-                  }
-
-                  function notifyMe() {
-                    if (Notification.permission !== "granted")
-                      Notification.requestPermission();
-                    else {
-                      var notification = new Notification('Dépassement du temps', {
-                        icon: 'images/logo.jpg',
-                        body: "Avez vous un soucis ? Demandez de l'aide !",
-                      });
-                    }
-                  }
+                $scope.timeChrono = [];
+                $scope.timeChrono.total = <?= $tache->getTmpRealisation(); ?> * 60;
+                var h = Math.floor(<?= $tache->getTmpRealisation(); ?> / 60);
+                var m = <?= $tache->getTmpRealisation(); ?> % 60;
+                h = h < 10 ? '0' + h : h;
+                m = m < 10 ? '0' + m : m;
+                $scope.time = h + ':' + m;
+                $interval(chrono, 1000);
+                chrono();
+                $scope.$watch('status', function (etat) {
+                  $http.post('statusChange', {idTache:<?= $tache->getId(); ?>, etat: etat});
 
                 });
 
+                function chrono() {
+
+                  $scope.timeChrono.s = Math.abs($scope.timeChrono.total % 60);
+
+                  if ($scope.timeChrono.total < 0)
+                  {
+                    $scope.timeChrono.m = Math.abs(Math.ceil($scope.timeChrono.total / 60) % 60);
+                    $scope.timeChrono.h = Math.abs(Math.ceil($scope.timeChrono.total / 3600));
+
+                  } else {
+                    $scope.timeChrono.m = Math.floor($scope.timeChrono.total / 60) % 60;
+                    $scope.timeChrono.h = Math.floor($scope.timeChrono.total / 3600);
+
+                  }
+                  $scope.timeChrono.s = $scope.timeChrono.s < 10 ? 0 + '' + $scope.timeChrono.s : $scope.timeChrono.s;
+                  $scope.timeChrono.m = $scope.timeChrono.m < 10 ? 0 + '' + $scope.timeChrono.m : $scope.timeChrono.m;
+                  $scope.timeChrono.h = $scope.timeChrono.h < 10 ? 0 + '' + $scope.timeChrono.h : $scope.timeChrono.h;
+
+                  if ($scope.timeChrono.total === 0) {
+                    notifyMe();
+                  }
+
+                  if ($scope.status === 'enCours')
+                  {
+                    $scope.timeChrono.total--;
+                  }
+
+                }
+
+                function notifyMe() {
+                  if (Notification.permission !== "granted")
+                    Notification.requestPermission();
+                  else {
+                    var notification = new Notification('Dépassement du temps', {
+                      icon: 'images/logo.jpg',
+                      body: "Avez vous un soucis ? Demandez de l'aide !",
+                    });
+                  }
+                }
+
+              });
 
 
-      </script>
+
+    </script>
 
   </body>
 </html>
