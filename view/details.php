@@ -21,21 +21,31 @@
 
     <div class="detail-container col-md-5">
       <h2>Titre :</h2>
-      <p class="title-details"><?= $tache->getTitre();?></p>
+      <p class="title-details">Titre de la demande</p>
+      <hr>
+      <h2>Temps estimé :</h2>
+      <p>1:50</p>
+      <hr>
       <h2>Description :</h2>
       <p class="description-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec consectetur urna non tellus feugiat sodales. Quisque diam mauris, luctus ac libero sit amet, elementum vehicula metus. Mauris neque mi, dignissim quis elit eget, porta iaculis neque. Suspendisse potenti. Quisque tempus lacinia odio quis aliquam. Phasellus condimentum turpis et ipsum mattis sollicitudin. Duis ac gravida mauris, sit amet suscipit lorem. Fusce varius dolor ac felis tristique cursus.</p>
     </div>
 
     <div class="chrono-container col-md-6">
-      <h2>Temps estimé :</h2>
-      <p>1:50</p>
       <h2>Temps écoulé :</h2>
-      <p class="chrono">00:00:00</p>
-      <button class="btn btn-primary col-md-2"><i class="fa fa-play-circle-o"></i></button>
-      <button class="btn btn-danger col-md-2"><i class="fa fa-pause-circle-o"></i></button>
-      <button class="btn btn-success col-md-2"><i class="fa fa-stop-circle-o"></i></button>
-      <h2>Statut :</h2>
-      <p class="state">En cours, Bloqué, Terminé</p>
+        <div class="container-btn">
+        <p class="chrono">00:00:00</p>
+        <button class="btn btn-chrono btn-primary"><i class="fa fa-play-circle-o"></i></button>
+        <button class="btn btn-chrono btn-danger"><i class="fa fa-pause-circle-o"></i></button>
+        <button class="btn btn-success btn-chrono"><i class="fa fa-stop-circle-o"></i></button>
+      </div>
+      <hr>
+      <h2 class="state">Statut :</h2>
+      <select name="type" class="form-control state-control">
+        <option value="assigne">Assigné</option>
+        <option value="encours">En cours</option>
+        <option value="bloque" >Bloqué</option>
+        <option value="termine" >Terminé</option>
+      </select>
 
     </div>
 
