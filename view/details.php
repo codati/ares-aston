@@ -36,7 +36,7 @@
 
     <div class="chrono-container col-md-6">
       <h2>Temps écoulé :</h2>
-      <div class="container-btn">
+      <div class="container-btn" ng-class="{ negatif :timeChrono.total < 0 }">
         <span ng-show="timeChrono.total < 0"> - </span> <p id="heures">{{ timeChrono.h }}</p><p class="separator">:</p><p id="minutes">{{ timeChrono.m }}</p><p class="separator-s">:</p><p id="secondes">{{ timeChrono.s }}</p><br>
         <button class="btn btn-chrono btn-primary" id="btn-play"><i class="fa fa-play-circle-o"></i></button>
         <button class="btn btn-chrono btn-danger" id="btn-pause"><i class="fa fa-pause-circle-o"></i></button>
@@ -65,7 +65,7 @@
 
                 console.log('test');
                 $scope.timeChrono = [];
-                $scope.timeChrono.total = -5500;
+                $scope.timeChrono.total = <?= $tache->getTmpRealisation(); ?> * 60;
 
 
                 var h = Math.floor(<?= $tache->getTmpRealisation(); ?> / 60);
