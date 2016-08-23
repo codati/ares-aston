@@ -239,3 +239,7 @@ a {
 .details-icon:hover {
 	color: rgba(243, 156, 18,1.0);
 }
+
+.form-container {
+	width: 80%;
+}
