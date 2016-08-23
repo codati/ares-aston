@@ -16,7 +16,7 @@
           </a>
         </div>
         <h1 class="main-title">Création d'une demande</h1>
-        <a href="/"><div class="logout"><i class="fa fa-sign-out"></i></div></a>
+        <a href="<?= Routeur::getInstence()->getBaseUrl() ?>"><div class="logout"><i class="fa fa-sign-out"></i></div></a>
       </div>
     </nav>
 

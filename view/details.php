@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <script src="js/scripts.js"></script>
     <script src="js/jquery-3.1.0.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
 
@@ -19,7 +20,7 @@
           </a>
         </div>
         <h1 class="dash-title">Détails d'une demande</h1>
-        <a href="/"><div class="logout"><i class="fa fa-sign-out"></i></div></a>
+        <a href="<?= Routeur::getInstence()->getBaseUrl() ?>"><div class="logout"><i class="fa fa-sign-out"></i></div></a>
       </div>
     </nav>
 
@@ -39,6 +40,8 @@
         <div id="div-chrono" ng-class="{ negatif :timeChrono.total < 0 }">
           <span class ="operateur" ng-show="timeChrono.total < 0"> - </span> <p id="heures">{{ timeChrono.h }}</p><p class="separator">:</p><p id="minutes">{{ timeChrono.m }}</p><p class="separator-s">:</p><p id="secondes">{{ timeChrono.s }}</p>
         </div><br>
+
+
         <button class="btn btn-chrono btn-primary" id="btn-play" ng-click="status = 'enCours'"><i class="fa fa-play-circle-o"></i></button>
         <button class="btn btn-chrono btn-danger" id="btn-pause" ng-click="status = 'bloque'"><i class="fa fa-pause-circle-o"></i></button>
         <button class="btn btn-success btn-chrono" id="btn-stop" ng-click="status = 'termine'"><i class="fa fa-stop-circle-o"></i></button>
