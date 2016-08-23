@@ -16,7 +16,7 @@
           </a>
         </div>
         <h1 class="dash-title">Liste des demandes</h1>
-        <a href="/"><div class="logout"><i class="fa fa-sign-out"></i></div></a>
+        <a href="<?= Routeur::getInstence()->getBaseUrl() ?>"><div class="logout"><i class="fa fa-sign-out"></i></div></a>
         <?php if (isset($_SESSION['chefdeprojet'])) : ?>
           <a href="addTache" class="add-tache"><i class="fa fa-plus"></i></a>
         <?php endif; ?>

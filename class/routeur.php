@@ -26,7 +26,7 @@ class Routeur {
    * 
    * @return Routeur
    */
-  static function getInstence($configFile) {
+  static function getInstence($configFile = 'controllers.php') {
     if (!isset(self::$routeurInstence)) {
       self::$routeurInstence = new Routeur($configFile);
     }
@@ -55,13 +55,17 @@ class Routeur {
    */
   function getUri() {
 
-   
+
 
     // var_dump(pathinfo($_SERVER['REQUEST_URI']));
     $uri = str_replace($this->config['baseUri'], '', $_SERVER['REQUEST_URI']);
-    $uri = str_replace( '?'. $_SERVER['QUERY_STRING'], '',$uri);
+    $uri = str_replace('?' . $_SERVER['QUERY_STRING'], '', $uri);
 
     return $uri;
+  }
+
+  function getBaseUrl() {
+    return $this->config['baseUri'];
   }
 
 }
