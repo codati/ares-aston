@@ -14,5 +14,9 @@ class Tache {
     $data['utilisateurs'] = \Model\Utilisateur::getAll();
     \Tools::renderView('addTache',$data);
   }
-
+  function add() {
+    var_dump($_POST);
+  }
+  
+  
 }
