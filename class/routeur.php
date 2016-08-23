@@ -55,9 +55,12 @@ class Routeur {
    */
   function getUri() {
 
-   // var_dump($_SERVER) ;
-    $uri = str_replace($this->config['baseUri'], '', $_SERVER['REDIRECT_URL']);
+   
 
+    var_dump(pathinfo($_SERVER['REQUEST_URI']));
+    $uri = str_replace($this->config['baseUri'], '', $_SERVER['REQUEST_URI']);
+    $uri = str_replace( '?'. $_SERVER['QUERY_STRING'], '',$uri);
+ var_dump($uri);
     return $uri;
   }
 
