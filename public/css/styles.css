@@ -66,7 +66,7 @@ body {
   background-color: rgba(189, 195, 199,0.6) !important;
 }
 
-.login-container {
+.login-container, .form-container {
 	padding: 10px;
 	border: 2px solid rgba(243, 156, 18,1.0);
 	border-radius: 8px;
@@ -109,7 +109,7 @@ body {
 }
 
 th {
-	background-color: rgba(39, 174, 96,1.0);
+	background-color: rgba(243, 156, 18,1.0);
 }
 
 tr:nth-child(even) {
@@ -196,8 +196,46 @@ table {
 	border-radius: 30px;
 	background-color: darkgray;
 	color: white;
+	transition: all 0.3s ease;
+}
+
+.logout:hover {
+	background-color: rgba(243, 156, 18,1.0);
+	color: rgba(41, 128, 185,1.0);
 }
 
 a {
 	text-decoration: none;
+}
+
+.add-tache {
+	position: fixed;
+	bottom: 25px;
+	left: 25px;
+	font-size: 4em;
+	color: rgba(243, 156, 18,1.0);
+	background-color: white;
+	width: 75px;
+	height: 75px;
+	text-align: center;
+	border-radius: 60px;
+	box-shadow: 0px 0px 10px white;
+	transition: all 0.3s ease;
+}
+
+.add-tache:hover {
+	color: rgba(41, 128, 185,1.0);
+	background-color: rgba(243, 156, 18,1.0);
+	box-shadow: 0px 0px 10px rgba(243, 156, 18,1.0);
+}
+
+.details-icon {
+	color: white;
+	margin-left: 15px;
+	font-size: 20px !important;
+	transition: all 0.3s ease;
+}
+
+.details-icon:hover {
+	color: rgba(243, 156, 18,1.0);
 }

@@ -16,9 +16,9 @@
           </a>
         </div>
         <h1 class="dash-title">Liste des demandes</h1>
-        <div><i class="fa fa-sign-out"></i></div>
+        <a href="/"><div class="logout"><i class="fa fa-sign-out"></i></div></a>
         <?php if (isset($_SESSION['chefdeprojet'])) : ?>
-          <a href="addTache"><i class="fa fa-pencil-square-o"></i></a>
+          <a href="addTache" class="add-tache"><i class="fa fa-plus"></i></a>
         <?php endif; ?>
 
       </div>
@@ -43,9 +43,9 @@
             <td><?= $tache->getutilisateur()->getLastname() . ' ' . $tache->getutilisateur()->getFirstname() ?></td>
             <td><?= $tache->getDescription() ?></td>
              <!-- <td>22/08/2016</td>-->
-            <td class="edit"><a href="details?id=<?= $tache->getId() ?>"><i class="fa fa-pencil-square-o"></i></a>
+            <td class="edit"><a href="details?id=<?= $tache->getId() ?>"><i class="fa fa-info-circle details-icon"></i></a>
             <?php if (isset($_SESSION['chefdeprojet'])) : ?>
-              <a href="edit?id=<?= $tache->getId() ?>"><i class="fa fa-pencil-square-o"></i></a></td>
+              <a href="edit?id=<?= $tache->getId() ?>"><i class="fa fa-pencil-square-o details-icon"></i></a></td>
            <?php endif; ?>
               </td>
           </tr>
