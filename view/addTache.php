@@ -22,7 +22,7 @@
 
     <div class="form-container">
       <form action="addTache" method="post">
-        <input class="form-control input" type="text" name="titre" placeholder="Titre" required>
+        <input class="form-control input" type="text" name="titre" placeholder="Titre" maxlength="80" required>
         <p>Description détaillé de la demande : </p>
         <textarea  class="form-control" name="description" placeholder="Description" cols="87" rows="8" maxlength="88" required></textarea><br>
 
