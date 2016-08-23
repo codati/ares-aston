@@ -16,7 +16,8 @@ namespace Controller;
 class Details {
 
   public function index() {
-    \Tools::renderView('details');
+    $data['tache'] = \Model\Tache::getById($_GET['id']);
+    \Tools::renderView('details', $data);
   }
 
 }

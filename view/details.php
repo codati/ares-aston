@@ -21,7 +21,7 @@
 
     <div class="detail-container col-md-5">
       <h2>Titre :</h2>
-      <p class="title-details">Titre de la demande</p>
+      <p class="title-details"><?= $tache->getTitre();?></p>
       <h2>Description :</h2>
       <p class="description-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec consectetur urna non tellus feugiat sodales. Quisque diam mauris, luctus ac libero sit amet, elementum vehicula metus. Mauris neque mi, dignissim quis elit eget, porta iaculis neque. Suspendisse potenti. Quisque tempus lacinia odio quis aliquam. Phasellus condimentum turpis et ipsum mattis sollicitudin. Duis ac gravida mauris, sit amet suscipit lorem. Fusce varius dolor ac felis tristique cursus.</p>
     </div>

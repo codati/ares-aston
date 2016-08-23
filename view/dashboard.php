@@ -38,7 +38,7 @@
             <td><?= $tache->getutilisateur()->getLastname() .' '. $tache->getutilisateur()->getFirstname()?></td>
             <td><?= $tache->getDescription() ?></td>
              <!-- <td>22/08/2016</td>-->
-            <td class="edit"><a href="#<?= $tache->getId() ?>"><i class="fa fa-pencil-square-o"></i></a></td>
+            <td class="edit"><a href="details?id=<?= $tache->getId() ?>"><i class="fa fa-pencil-square-o"></i></a></td>
           </tr>
         <?php endforeach; ?>
       </table> 
