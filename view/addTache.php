@@ -26,7 +26,7 @@
         <textarea  placeholder="Description" cols="87" rows="8" maxlength="88">
         </textarea><br>
         <p>Date d'échéance : </p>
-        <input type="date" name="echeance" class="echeance"><br>
+        <input type="date" name="echeance" class="echeance"><input type="time" name="hour"><br>
         <p>Temps prévisionel (en minute) : </p>
         <input type="number" name="tmp-prevision" min="0" step="5"><br>
         <p>Assigné à :</p>
