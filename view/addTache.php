@@ -16,6 +16,7 @@
           </a>
         </div>
         <h1 class="main-title">Création d'une demande</h1>
+        <a href="/"><div class="logout"><i class="fa fa-sign-out"></i></div></a>
       </div>
     </nav>
     
@@ -23,8 +24,7 @@
       <form action="addTache" method="post">
         <input class="form-control input" type="text" name="titre" placeholder="Titre" required>
         <p>Description détaillé de la demande : </p>
-        <textarea  class="form-control" placeholder="Description" cols="87" rows="8" maxlength="88" required>
-        </textarea><br>
+        <textarea  class="form-control" placeholder="Description" cols="87" rows="8" maxlength="88" required></textarea><br>
 
         <p>Date d'échéance : </p>
         <input class="form-control" type="date" name="echeance" class="echeance" required><br>
