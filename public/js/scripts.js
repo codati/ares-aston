@@ -19,3 +19,9 @@ $("#btn-stop").click(function(){
 	$("#select-state").val("termine");
 	$("#btn-play").removeAttr("disabled");
 });
+
+function blinker() {
+    $('.negatif').fadeOut(500).fadeIn(500);
+}
+ 
+setInterval(blinker, 3000);

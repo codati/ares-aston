@@ -36,8 +36,10 @@
 
     <div class="chrono-container col-md-6">
       <h2>Temps écoulé :</h2>
-      <div class="container-btn" ng-class="{ negatif :timeChrono.total < 0 }">
-        <span ng-show="timeChrono.total < 0"> - </span> <p id="heures">{{ timeChrono.h }}</p><p class="separator">:</p><p id="minutes">{{ timeChrono.m }}</p><p class="separator-s">:</p><p id="secondes">{{ timeChrono.s }}</p><br>
+      <div class="container-btn">
+        <div ng-class="{ negatif :timeChrono.total < 0 }">
+          <span class ="operateur" ng-show="timeChrono.total < 0"> - </span> <p id="heures">{{ timeChrono.h }}</p><p class="separator">:</p><p id="minutes">{{ timeChrono.m }}</p><p class="separator-s">:</p><p id="secondes">{{ timeChrono.s }}</p>
+        </div><br>
         <button class="btn btn-chrono btn-primary" id="btn-play"><i class="fa fa-play-circle-o"></i></button>
         <button class="btn btn-chrono btn-danger" id="btn-pause"><i class="fa fa-pause-circle-o"></i></button>
         <button class="btn btn-success btn-chrono" id="btn-stop"><i class="fa fa-stop-circle-o"></i></button>

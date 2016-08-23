@@ -258,3 +258,11 @@ a {
 #secondes, .separator-s {
 	font-size: 4em;
 }
+
+.operateur {
+	font-size: 8em;
+}
+
+.negatif {
+	color: rgba(192, 57, 43,1.0);
+}
