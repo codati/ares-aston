@@ -22,12 +22,13 @@
 
     <div class="form-container">
       <form action="addTache" method="post">
+        <input class="hiddenId" type="text" name="id" value="<?= $tache->getId_utilisateur(); ?>">
         <input class="form-control input" type="text" name="titre" placeholder="Titre" maxlength="80" required value="<?= $tache->getTitre(); ?>">
         <p>Description détaillé de la demande : </p>
-        <textarea  class="form-control" name="description" placeholder="Description" cols="87" rows="8" maxlength="88" value="<?= $tache->getDescription(); ?>" required></textarea><br>
+        <textarea  class="form-control" name="description" placeholder="Description" cols="87" rows="8" maxlength="88" required><?= $tache->getDescription(); ?></textarea><br>
 
         <p>Date d'échéance : </p>
-        <input class="form-control" type="date" name="echeance" class="echeance" required><br>
+        <input class="form-control" type="date" name="echeance" class="echeance" value="<?= $tacheDate->format('Y-m-j') ?>"" required><br>
         <p>à quelle heure ? (si nécessaire)</p>
         <input class="form-control" type="time" name="hour" value="<?= $tacheDate->format('H:i') ?>"><br>
 

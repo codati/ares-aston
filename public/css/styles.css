@@ -266,3 +266,7 @@ a {
 .negatif {
 	color: rgba(192, 57, 43,1.0);
 }
+
+.hiddenId {
+	display: none;
+}
