@@ -27,7 +27,8 @@ class Bdd {
 
     $this->config = require PATH_CONFIG_PRIVATE . 'bdd.php';
 
-    $this->bdd = new PDO('mysql:host=localhost;dbname=' . $this->config['bddName'], $this->config['user'], $this->config['password']);
+    $this->bdd = new PDO('mysql:host=localhost;dbname=' . $this->config['bddName'], $this->config['user'], $this->config['password'],
+            array( PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8") );
   }
 /**
  * 
