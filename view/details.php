@@ -24,7 +24,7 @@
       </div>
     </nav>
 
-    <div class="detail-container col-md-5">
+    <div id="test" class="detail-container col-md-5">
       <h2>Titre :</h2>
       <p class="title-details"><?= $tache->getTitre(); ?></p> 
       <hr>
@@ -112,9 +112,9 @@
                   if (Notification.permission !== "granted")
                     Notification.requestPermission();
                   else {
-                    var notification = new Notification('Dépassement du temps', {
+                    var notification = new Notification('Dépassement du temps imparti !', {
                       icon: 'images/logo.jpg',
-                      body: "Avez vous un soucis ? Demandez de l'aide !",
+                      body: "Vous avez dépassez le temps prévu à : " + <?= $tache->getTmpRealisation(); ?> + " minutes !"
                     });
                   }
                 }

@@ -15,16 +15,16 @@
             <img alt="Ares" class="logo-a" src="images/logo.jpg">
           </a>
         </div>
-        <h1 class="main-title">Création d'une demande</h1>
-        <a href="/"><div class="logout"><i class="fa fa-sign-out"></i></div></a>
+        <h1 class="main-title">Edition d'une demande</h1>
+        <a href="<?= Routeur::getInstence()->getBaseUrl() ?>"><div class="logout"><i class="fa fa-sign-out"></i></div></a>
       </div>
     </nav>
 
     <div class="form-container">
       <form action="addTache" method="post">
-        <input class="form-control input" type="text" name="titre" placeholder="Titre" maxlength="80" required>
+        <input class="form-control input" type="text" name="titre" placeholder="Titre" maxlength="80" required value="<?= $tache->getTitre(); ?>">
         <p>Description détaillé de la demande : </p>
-        <textarea  class="form-control" name="description" placeholder="Description" cols="87" rows="8" maxlength="88" required></textarea><br>
+        <textarea  class="form-control" name="description" placeholder="Description" cols="87" rows="8" maxlength="88" value="<?= $tache->getDescription(); ?>" required></textarea><br>
 
         <p>Date d'échéance : </p>
         <input class="form-control" type="date" name="echeance" class="echeance" required><br>
@@ -32,7 +32,7 @@
         <input class="form-control" type="time" name="hour"><br>
 
         <p>Temps prévisionel (en minute) : </p>
-        <input class="form-control" type="number" name="tmp-prevision" min="0" step="5" required><br>
+        <input class="form-control" type="number" name="tmp-prevision" min="0" step="5" value="<?= $tache->getTmpRealisation(); ?>" required><br>
 
         <p>Assigné à :</p>
         <select class="form-control" name="utilisateur" required>
