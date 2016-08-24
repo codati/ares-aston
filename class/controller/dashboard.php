@@ -17,10 +17,11 @@ class Dashboard {
 
   public function index() {
     $data['taches'] =  \Model\Tache::getAll();
-
-
+    $data['messages'] = $_SESSION['messages'];
     \Tools::renderView('dashboard',$data);
     
+    
+     $_SESSION['messages'] = [];
 //    
 //    $tache = new \Model\Tache();
 //    $tache->setTitre('test');

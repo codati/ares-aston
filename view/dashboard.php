@@ -24,8 +24,14 @@
     </nav>
 
     <div class="table-responsive">
-      <div class="message-edit bg-success"><p>La demande a bien été mise à jour.</p></div>
-      <div class="message-create bg-success"><p>La demande a bien été créée.</p></div>
+      <?php if ($messages['editTache']) : ?>
+        <div class="message-edit bg-success"><p>La demande a bien été mise à jour.</p></div>
+      <?php endif; ?>
+        
+      <?php if ($messages['addTache']) : ?>
+        <div class="message-create bg-success"><p>La demande a bien été créée.</p></div>
+      <?php endif; ?>
+
       <table rules="all" class="table"> 
         <tr> 
           <th>Numéro de demande</th>
@@ -47,7 +53,7 @@
             <td class="edit"><a href="details?id=<?= $tache->getId() ?>"><i class="fa fa-info-circle details-icon"></i></a>
               <?php if (isset($_SESSION['chefdeprojet'])) : ?>
                 <a href="editTache?id=<?= $tache->getId() ?>"><i class="fa fa-pencil-square-o details-icon"></i></a></td>
-              <?php endif; ?>
+                <?php endif; ?>
             </td>
           </tr>
         <?php endforeach; ?>

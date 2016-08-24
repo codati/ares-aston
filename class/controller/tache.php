@@ -24,7 +24,7 @@ class Tache {
     $tache->setTmpRealisation($_POST['tmp-prevision']);
     $tache->setId_utilisateur($_POST['utilisateur']);
     $tache->save();
-
+    $_SESSION['messages']['addTache'] = true;
 
     header('Location: dashboard');
   }
@@ -44,6 +44,7 @@ class Tache {
     $tache->setTmpRealisation($_POST['tmp-prevision']);
     $tache->setId_utilisateur($_POST['utilisateur']);
     $tache->save();
+    $_SESSION['messages']['editTache'] = true;
 
 
     header('Location: dashboard');
