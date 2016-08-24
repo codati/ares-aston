@@ -33,4 +33,11 @@ class Userboard {
 //    $tache->save();
   }
 
+  public function viewPlanning() {
+    $data['messages'] = $_SESSION['messages'];
+    \Tools::renderView('planning',$data);
+  }
+    
+
+
 }

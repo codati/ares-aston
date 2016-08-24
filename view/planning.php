@@ -11,7 +11,7 @@
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="dashboard">
+          <a class="navbar-brand" href="#">
             <img alt="Ares" class="logo-a" src="images/logo.jpg">
           </a>
         </div>
@@ -21,14 +21,17 @@
           <a href="addTache" class="add-tache"><i class="fa fa-plus"></i></a>
         <?php endif; ?>
       </div>
+            <?php if (isset($_SESSION['chefdeprojet'])) : ?>
+              <a href="userboard"><li class="item-menu col-md-6">Liste des utilisateurs</li></a>
+            <?php endif; ?>
         <div class="menu-user">
           <ul class="liste-menu">
             <a href="dashboard"><li class="item-menu col-md-6">Liste des demandes</li></a>
             <?php if (isset($_SESSION['chefdeprojet'])) : ?>
-            <a href="userboard"><li class="item-menu col-md-6 active">Liste des utilisateurs</li></a>
+            <a href="userboard"><li class="item-menu col-md-6">Liste des utilisateurs</li></a>
             <?php endif; ?>
             <?php if (isset($_SESSION['utilisateur'])) : ?>
-            <a href="planning"><li class="item-menu col-md-6">Planning de la semaine</li></a>
+            <a href="planning"><li class="item-menu col-md-6 active">Planning de la semaine</li></a>
             <?php endif; ?>
           </ul>
         </div>
@@ -36,16 +39,18 @@
     <div class="table-responsive">
       <table rules="all" class="table"> 
         <tr> 
-          <th>Nom</th>
-          <th>Prénom</th>
-          <th>Id</th>
-          <th>Action</th>
+          <th>Lundi</th>
+          <th>Mardi</th>
+          <th>Mercredi</th>
+          <th>Jeudi</th>
+          <th>Vendredi</th>
         </tr> 
           <tr> 
-            <td>Jaques</td>
-            <td>Chirac</td>
-            <td>42</td>
-            <td><a href="planning"><i class="fa fa-calendar details-icon"></i></a></td>
+            <td>tache</td>
+            <td>tache</td>
+            <td>tache</td>
+            <td>tache</td>
+            <td>tache</td>
           </tr>
       </table> 
     </div>
