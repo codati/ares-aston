@@ -11,7 +11,7 @@
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="dashboard">
             <img alt="Ares" class="logo-a" src="images/logo.jpg">
           </a>
         </div>
