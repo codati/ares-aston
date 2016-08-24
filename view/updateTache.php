@@ -21,7 +21,7 @@
     </nav>
 
     <div class="form-container">
-      <form action="addTache" method="post">
+      <form action="editTache" method="post">
         <input class="hiddenId" type="text" name="id" value="<?= $tache->getId_utilisateur(); ?>">
         <input class="form-control input" type="text" name="titre" placeholder="Titre" maxlength="80" required value="<?= $tache->getTitre(); ?>">
         <p>Description détaillé de la demande : </p>
@@ -43,7 +43,7 @@
 
         </select><br>
 
-        <button class="login-inline btn btn-success" type="submit">Créer la demande</button>
+        <button class="login-inline btn btn-success" type="submit">Mettre à jour la demande</button>
       </form>
     </div>
     <script src="js/jquery-3.1.0.js"></script>
