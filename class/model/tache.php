@@ -47,7 +47,9 @@ class Tache extends \Model {
   function getEcheance() {
     return $this->echeance;
   }
-
+  function getEcheanceDateTime() {
+    return new \DateTime($this->echeance);
+  }
   function getTmpRealisation() {
     return $this->tmpRealisation;
   }
