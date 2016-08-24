@@ -39,7 +39,15 @@ class Routeur {
     $uri = $this->getUri();
     if (isset($this->controller[$_SERVER['REQUEST_METHOD']][$uri])) {
 
+
       $configContoller = $this->controller[$_SERVER['REQUEST_METHOD']][$uri];
+      // var_dump($_SESSION['auth'][$configContoller['auth']]);
+      // var_dump($configContoller['auth']);
+      //  var_dump($configContoller);
+      if (isset($configContoller['auth']) AND ! $_SESSION['auth'][$configContoller['auth']]) {
+        $configContoller = $this->controller['default'];
+      }
+
       $controllerName = 'Controller\\' . $configContoller['controller'];
       $controller = new $controllerName($uri);
       $configContollerAction = $configContoller['action'];

@@ -16,9 +16,10 @@ class Login {
     } else {
       \Tools::renderView('login');
     }
-    
-    unset( $_SESSION['chefdeprojet']);
-    unset( $_SESSION['utilisateur']);
+
+    unset($_SESSION['chefdeprojet']);
+    unset($_SESSION['utilisateur']);
+    unset($_SESSION['auth']);
   }
 
   function connect() {
@@ -26,7 +27,6 @@ class Login {
     switch ($_POST['type']) {
       case "utilisateur":
         $user = \Model\Utilisateur::getUser($_POST['password'], $_POST['login']);
-
 
         break;
       case "chefdeprojet":
@@ -36,6 +36,10 @@ class Login {
 
     if ($user) {
       $_SESSION[$_POST['type']] = $user;
+      if ($_POST['type'] == "chefdeprojet") {
+        $_SESSION['auth']["utilisateur"] = true;
+      }
+      $_SESSION['auth'][$_POST['type']] = true;
       header('Location: dashboard');
     } else {
       $_SESSION['lastPost'] = $_POST;
