@@ -47,15 +47,34 @@ class Tache extends \Model {
   function getEcheance() {
     return $this->echeance;
   }
+
   function getEcheanceDateTime() {
     return new \DateTime($this->echeance);
   }
+
   function getTmpRealisation() {
     return $this->tmpRealisation;
   }
 
+  function getTmpRealisationDsiplay() {
+    $h = floor($this->tmpRealisation / 60);
+    $m = $this->tmpRealisation % 60;
+    $h = $h < 10 ? '0' . $h : $h;
+    $m = $m < 10 ? '0' . $m : $m;
+    return $h . ':' . $m;
+  }
+
   function getTmpReel() {
     return $this->tmpReel;
+  }
+
+  function getTmpReelDisplay() {
+
+    $h = floor($this->tmpReel / 60);
+    $m = $this->tmpReel % 60;
+    $h = $h < 10 ? '0' . $h : $h;
+    $m = $m < 10 ? '0' . $m : $m;
+    return $h . ':' . $m;
   }
 
   function getEtat() {
