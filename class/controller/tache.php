@@ -16,18 +16,17 @@ class Tache {
   }
 
   function add() {
-    
+
     $tache = new \Model\Tache();
     $tache->setTitre($_POST['titre']);
     $tache->setDescription($_POST['description']);
-    $tache->setEcheance($_POST['echeance'] . ' ' .$_POST['hour'] );
+    $tache->setEcheance($_POST['echeance'] . ' ' . $_POST['hour']);
     $tache->setTmpRealisation($_POST['tmp-prevision']);
     $tache->setId_utilisateur($_POST['utilisateur']);
     $tache->save();
-    
-    
-    header('Location: dashboard');
 
+
+    header('Location: dashboard');
   }
 
   function getViewEdit() {
@@ -38,7 +37,16 @@ class Tache {
   }
 
   function edit() {
-    var_dump($_POST);
+    $tache = \Model\Tache::getById($_POST['id']);
+    $tache->setTitre($_POST['titre']);
+    $tache->setDescription($_POST['description']);
+    $tache->setEcheance($_POST['echeance'] . ' ' . $_POST['hour']);
+    $tache->setTmpRealisation($_POST['tmp-prevision']);
+    $tache->setId_utilisateur($_POST['utilisateur']);
+    $tache->save();
+
+
+    header('Location: dashboard');
   }
 
   function statusChange() {

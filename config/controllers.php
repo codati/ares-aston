@@ -23,6 +23,7 @@ $controller['GET']['/addTache']['action'] = 'getViewAdd';
 $controller['POST']['/addTache']['controller'] = 'tache';
 $controller['POST']['/addTache']['action'] = 'add';
 
+// editTache
 $controller['GET']['/editTache']['controller'] = 'tache';
 $controller['GET']['/editTache']['action'] = 'getViewEdit';
 
