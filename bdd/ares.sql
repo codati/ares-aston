@@ -34,11 +34,17 @@ CREATE TABLE `Tache` (
   PRIMARY KEY (`id`),
   KEY `id_utilisateur` (`id_utilisateur`),
   CONSTRAINT `Tache_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `Utilisateur` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 TRUNCATE `Tache`;
 INSERT INTO `Tache` (`id`, `id_utilisateur`, `titre`, `description`, `echeance`, `tmpRealisation`, `tmpReel`, `etat`) VALUES
-(1,	1,	'test',	'test',	'2016-08-24 10:14:04',	100,	NULL,	'assignee');
+(1,	1,	'test',	'test',	'2016-08-24 10:14:04',	100,	0,	'enCours'),
+(2,	2,	'Titre',	'des',	'2016-08-26 17:30:00',	35,	NULL,	'assignee'),
+(3,	3,	'title',	'des',	'2016-08-22 05:30:00',	70,	NULL,	'assignee'),
+(4,	1,	'test',	'test',	'2016-08-24 14:07:52',	100,	0,	'enCours'),
+(5,	2,	'Titre1',	'des',	'2016-08-24 14:08:57',	35,	NULL,	'assignee'),
+(6,	3,	'title',	'des',	'2016-08-24 14:07:52',	70,	NULL,	'assignee'),
+(7,	2,	'Titre2',	'des',	'2016-08-24 16:08:57',	35,	NULL,	'assignee');
 
 DROP TABLE IF EXISTS `Utilisateur`;
 CREATE TABLE `Utilisateur` (
@@ -56,4 +62,4 @@ INSERT INTO `Utilisateur` (`id`, `login`, `password`, `firstName`, `lastName`) V
 (2,	'test2',	'$2y$10$pTEmeZu2dtDstB0v.7wSTOwWVZlNCNMK74WnGJod57RoNiDeGgLyS',	'Iven',	'Rancourt'),
 (3,	'test3',	'$2y$10$pTEmeZu2dtDstB0v.7wSTOwWVZlNCNMK74WnGJod57RoNiDeGgLyS',	'Timothée',	'Pouchard');
 
--- 2016-08-24 10:14:29
+-- 2016-08-24 14:20:19
