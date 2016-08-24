@@ -148,6 +148,7 @@ class Tache extends \Model {
     $query = \Bdd::getInstence()->prepare(
             'DELETE FROM `Tache` WHERE ((`id` = :id));;');
     $query->bindParam('id', $this->getId());
+    $query->execute() or die(print_r($query->errorInfo(), true));
   }
 
 }

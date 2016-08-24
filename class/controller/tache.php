@@ -63,6 +63,9 @@ class Tache {
   function delete() {
     $tache = \Model\Tache::getById($_GET['id']);
     $tache->delete();
+    $_SESSION['messages']['deleteTache'] = true;
+
+    header('Location: dashboard');
   }
 
 }
