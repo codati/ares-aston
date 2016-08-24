@@ -38,7 +38,7 @@
         <?php foreach ($taches as $tache): ?>
           <tr> 
             <td><?= $tache->getId() ?></td>
-            <td><?= $tache->getEtat() ?></td>
+            <td><?= $tache->getEtatDisplay() ?></td>
             <td><?= $tache->getEcheance() ?></td>
             <td><?= $tache->getutilisateur()->getLastname() . ' ' . $tache->getutilisateur()->getFirstname() ?></td>
             <td><?= $tache->getDescription() ?></td>

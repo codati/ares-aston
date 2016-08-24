@@ -60,6 +60,18 @@ class Tache extends \Model {
     return $this->etat;
   }
 
+  function getEtatDisplay() {
+    $etat = array(
+        'assignee' => 'Assigné',
+        'enCours' => 'En cours',
+        'bloque' => 'Bloqué',
+        'termine' => 'Terminé',
+    );
+
+
+    return $etat[$this->etat];
+  }
+
   function setId_utilisateur($id_utilisateur) {
     $this->id_utilisateur = $id_utilisateur;
   }
@@ -120,7 +132,7 @@ class Tache extends \Model {
             )or die(print_r(\Bdd::getInstence()->errorInfo(), true));
     $query->bindParam('description', $this->getDescription());
     $query->bindParam('echeance', $this->getEcheance());
-  //  $query->bindParam('etat', $this->getEtat());
+    //  $query->bindParam('etat', $this->getEtat());
     $query->bindParam('id_utilisateur', $this->getId_utilisateur());
     $query->bindParam('titre', $this->getTitre());
     $query->bindParam('tmpRealisation', $this->getTmpRealisation());
