@@ -144,4 +144,10 @@ class Tache extends \Model {
     $this->setId(\Bdd::getInstence()->lastInsertId());
   }
 
+  public function delete() {
+    $query = \Bdd::getInstence()->prepare(
+            'DELETE FROM `Tache` WHERE ((`id` = :id));;');
+    $query->bindParam('id', $this->getId());
+  }
+
 }

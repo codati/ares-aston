@@ -60,4 +60,9 @@ class Tache {
     $tache->save();
   }
 
+  function delete() {
+    $tache = \Model\Tache::getById($_GET['id']);
+    $tache->delete();
+  }
+
 }

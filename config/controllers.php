@@ -33,4 +33,7 @@ $controller['POST']['/editTache']['action'] = 'edit';
 $controller['POST']['/statusChange']['controller'] = 'tache';
 $controller['POST']['/statusChange']['action'] = 'statusChange';
 
+$controller['POST']['/deleteTache']['controller'] = 'tache';
+$controller['POST']['/deleteTache']['action'] = 'delete';
+
 return $controller;
