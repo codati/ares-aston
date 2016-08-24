@@ -15,7 +15,7 @@
             <img alt="Ares" class="logo-a" src="images/logo.jpg">
           </a>
         </div>
-        <h1 class="dash-title">Liste des demandes</h1>
+        <h1 class="dash-title">Planning de la semaine</h1>
         <a href="<?= Routeur::getInstence()->getBaseUrl() ?>"><div class="logout"><i class="fa fa-sign-out"></i></div></a>
         <?php if (isset($_SESSION['chefdeprojet'])) : ?>
           <a href="addTache" class="add-tache"><i class="fa fa-plus"></i></a>
@@ -34,7 +34,7 @@
         </div>
     </nav>
     <div class="table-responsive">
-      <table rules="all" class="table"> 
+      <table rules="all" class="table table-taches"> 
         <tr> 
           <th>Lundi</th>
           <th>Mardi</th>
@@ -43,11 +43,11 @@
           <th>Vendredi</th>
         </tr> 
           <tr> 
-            <td>tache</td>
-            <td>tache</td>
-            <td>tache</td>
-            <td>tache</td>
-            <td>tache</td>
+            <td><a href="#" class="cell-link" style="text-decoration:none"><div class="cell-div">tache</div></a></td>
+            <td><a href="#" class="cell-link" style="text-decoration:none"><div class="cell-div">tache</div></a></td>
+            <td><a href="#" class="cell-link" style="text-decoration:none"><div class="cell-div">tache</div></a></td>
+            <td><a href="#" class="cell-link" style="text-decoration:none"><div class="cell-div">tache</div></a></td>
+            <td><a href="#" class="cell-link" style="text-decoration:none"><div class="cell-div">tache</div></a></td>
           </tr>
       </table> 
     </div>
