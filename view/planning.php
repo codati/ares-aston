@@ -21,9 +21,6 @@
           <a href="addTache" class="add-tache"><i class="fa fa-plus"></i></a>
         <?php endif; ?>
       </div>
-            <?php if (isset($_SESSION['chefdeprojet'])) : ?>
-              <a href="userboard"><li class="item-menu col-md-6">Liste des utilisateurs</li></a>
-            <?php endif; ?>
         <div class="menu-user">
           <ul class="liste-menu">
             <a href="dashboard"><li class="item-menu col-md-6">Liste des demandes</li></a>

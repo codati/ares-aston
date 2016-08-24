@@ -24,6 +24,10 @@
       </div>
     </nav>
 
+      <?php if (isset($_SESSION['chefdeprojet'])) : ?>
+        <a href="editTache?id=<?= $tache->getId() ?>" class="edit-tache"><i class="fa fa-pencil-square-o"></i></a>
+      <?php endif; ?>
+
     <div id="test" class="detail-container col-md-5">
       <h2>Titre :</h2>
       <p class="title-details"><?= $tache->getTitre(); ?></p> 
