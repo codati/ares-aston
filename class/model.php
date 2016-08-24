@@ -12,30 +12,36 @@
  * @author codati
  */
 class Model {
+
   protected $id;
-  
+
   protected function setId($id) {
     $this->id = $id;
   }
-  
+
   function getId() {
     return $this->id;
   }
-  
+
   public static function getClassName() {
     return static::class;
-    
   }
+
   public static function getTableName() {
 
     return str_replace('Model\\', '', self::getClassName());
   }
 
-  public static function getAll() {
+  public static function getAll($Where = '', $param = array()) {
 
-    $query = \Bdd::getInstence()->prepare('SELECT * FROM `'. self::getTableName().'`');
-
-    $query->execute();
+    $queryString = 'SELECT * FROM `' . self::getTableName() . '`';
+    if ($Where != '') {
+      $queryString .= ' WHERE ' . $Where;
+    }
+    $queryString .= ' ;';
+    $query = \Bdd::getInstence()->prepare($queryString);
+    $query->execute($param);
+    
     $objects = $query->fetchAll(\PDO::FETCH_CLASS, self::getClassName());
 
     return $objects;
@@ -43,7 +49,7 @@ class Model {
 
   public static function getById($id) {
 
-    $query = \Bdd::getInstence()->prepare('SELECT * FROM `'. self::getTableName().'` WHERE `id` = :id');
+    $query = \Bdd::getInstence()->prepare('SELECT * FROM `' . self::getTableName() . '` WHERE `id` = :id');
     $query->bindParam('id', $id);
 
     $query->execute();

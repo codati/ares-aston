@@ -16,12 +16,18 @@ namespace Controller;
 class Dashboard {
 
   public function index() {
-    $data['taches'] =  \Model\Tache::getAll();
+    if ($_SESSION['chefdeprojet']) {
+      $data['taches'] = \Model\Tache::getAll();
+    } else {
+      var_dump($_SESSION['utilisateur']);
+      $data['taches'] = \Model\Tache::getAll(' id_utilisateur =:id_utilisateur', array( 'id_utilisateur'=> $_SESSION['utilisateur']->getId()));
+    }
+
     $data['messages'] = $_SESSION['messages'];
-    \Tools::renderView('dashboard',$data);
-    
-    
-     $_SESSION['messages'] = [];
+    \Tools::renderView('dashboard', $data);
+
+
+    $_SESSION['messages'] = [];
 //    
 //    $tache = new \Model\Tache();
 //    $tache->setTitre('test');

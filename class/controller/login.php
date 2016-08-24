@@ -36,6 +36,7 @@ class Login {
 
     if ($user) {
       $_SESSION[$_POST['type']] = $user;
+      
       if ($_POST['type'] == "chefdeprojet") {
         $_SESSION['auth']["utilisateur"] = true;
       }
