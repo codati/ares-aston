@@ -248,6 +248,7 @@ a {
 
 .form-container {
 	width: 80%;
+	margin-bottom: 10px;
 }
 
 #secondes, #minutes, #heures, .separator, .separator-s {
@@ -269,4 +270,11 @@ a {
 
 .hiddenId {
 	display: none;
+}
+
+.message-edit, .message-create {
+	padding: 10px;
+	margin-bottom: 5px;
+	background-color: #2ecc71 !important;
+	color: white;
 }
