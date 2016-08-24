@@ -29,7 +29,7 @@
         <p>Date d'échéance : </p>
         <input class="form-control" type="date" name="echeance" class="echeance" required><br>
         <p>à quelle heure ? (si nécessaire)</p>
-        <input class="form-control" type="time" name="hour"><br>
+        <input class="form-control" type="time" name="hour" value="<?= $tacheDate->format('H:i') ?>"><br>
 
         <p>Temps prévisionel (en minute) : </p>
         <input class="form-control" type="number" name="tmp-prevision" min="0" step="5" value="<?= $tache->getTmpRealisation(); ?>" required><br>

@@ -33,6 +33,7 @@ class Tache {
   function getViewEdit() {
     $data['utilisateurs'] = \Model\Utilisateur::getAll();
     $data['tache'] = \Model\Tache::getById($_GET['id']);
+    $data['tacheDate'] = new \DateTime($data['tache']->getEcheance());
     \Tools::renderView('updateTache', $data);
   }
 
@@ -46,6 +47,7 @@ class Tache {
     var_dump($input);
     $tache = \Model\Tache::getById($input['idTache']);
     $tache->setEtat($input['etat']);
+    $tache->setTmpReel($input['tmpReel']);
     $tache->save();
   }
 
