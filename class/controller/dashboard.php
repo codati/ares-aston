@@ -19,7 +19,6 @@ class Dashboard {
     if ($_SESSION['chefdeprojet']) {
       $data['taches'] = \Model\Tache::getAll();
     } else {
-      var_dump($_SESSION['utilisateur']);
       $data['taches'] = \Model\Tache::getAll(' id_utilisateur =:id_utilisateur', array( 'id_utilisateur'=> $_SESSION['utilisateur']->getId()));
     }
 
