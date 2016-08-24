@@ -56,7 +56,7 @@ class Tache extends \Model {
     return $this->tmpRealisation;
   }
 
-  function getTmpRealisationDsiplay() {
+  function getTmpRealisationDisplay() {
     $h = floor($this->tmpRealisation / 60);
     $m = $this->tmpRealisation % 60;
     $h = $h < 10 ? '0' . $h : $h;
