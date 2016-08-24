@@ -54,6 +54,6 @@ $controller['GET']['/userboard']['auth'] = 'chefdeprojet';
 
 $controller['GET']['/planning']['controller'] = 'Userboard';
 $controller['GET']['/planning']['action'] = 'viewPlanning';
-$controller['GET']['/planning']['auth'] = 'chefdeprojet';
+$controller['GET']['/planning']['auth'] = 'utilisateur';
 
 return $controller;
