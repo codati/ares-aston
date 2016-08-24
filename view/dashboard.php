@@ -22,24 +22,24 @@
           <a href="addTache" class="add-tache"><i class="fa fa-plus"></i></a>
         <?php endif; ?>
       </div>
-        <div class="menu-user">
-          <ul class="liste-menu">
-            <a href="dashboard"><li class="item-menu col-md-6">Liste des demandes</li></a>
-            <?php if (isset($_SESSION['chefdeprojet'])) : ?>
+      <div class="menu-user">
+        <ul class="liste-menu">
+          <a href="dashboard"><li class="item-menu col-md-6">Liste des demandes</li></a>
+          <?php if (isset($_SESSION['chefdeprojet'])) : ?>
             <a href="userboard"><li class="item-menu col-md-6">Liste des utilisateurs</li></a>
-            <?php endif; ?>
-            <?php if (isset($_SESSION['utilisateur'])) : ?>
+          <?php endif; ?>
+          <?php if (isset($_SESSION['utilisateur'])) : ?>
             <a href="planning"><li class="item-menu col-md-6">Planning de la semaine</li></a>
-            <?php endif; ?>
-          </ul>
-        </div>
+          <?php endif; ?>
+        </ul>
+      </div>
     </nav>
 
     <div class="table-responsive">
       <?php if ($messages['editTache']) : ?>
         <div class="message-edit bg-success"><p>La demande a bien été mise à jour.</p></div>
       <?php endif; ?>
-        
+
       <?php if ($messages['addTache']) : ?>
         <div class="message-create bg-success"><p>La demande a bien été créée.</p></div>
       <?php endif; ?>
@@ -66,13 +66,13 @@
             <td><?= $tache->getEcheance() ?></td>
             <td><?= $tache->getutilisateur()->getLastname() . ' ' . $tache->getutilisateur()->getFirstname() ?></td>
             <td><?= $tache->getTitre() ?></td>
-            <td><?= $tache->getTmpRealisation()  ?></td>
-            <td><?= empty($tache->getTmpReel()) ? "Non commencée": $tache->getTmpReel() ?></td>
+            <td><?= $tache->getTmpRealisation() ?></td>
+            <td><?= empty($tache->getTmpReel()) ? "Non commencée" : $tache->getTmpReel() ?></td>
              <!-- <td>22/08/2016</td>-->
             <td class="edit"><a href="details?id=<?= $tache->getId() ?>"><i class="fa fa-info-circle details-icon"></i></a>
               <?php if (isset($_SESSION['chefdeprojet'])) : ?>
                 <a href="editTache?id=<?= $tache->getId() ?>"><i class="fa fa-pencil-square-o details-icon"></i></a><a href="deleteTache?id=<?= $tache->getId() ?>"><i class="fa fa-trash-o details-icon"></i></a></td>
-              <?php endif; ?>
+                <?php endif; ?>
             </td>
           </tr>
         <?php endforeach; ?>
