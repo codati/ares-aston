@@ -314,3 +314,17 @@ a {
 	background-color: rgba(243, 156, 18,0.7);
 }
 
+.tache-bloque {
+	background-color: rgba(231, 76, 60,1.0) !important;
+	color: white;
+}
+
+.tache-encours{
+	background-color: rgba(52, 152, 219,0.6) !important;
+	color: white;
+}
+
+.tache-termine{
+	background-color: rgba(46, 204, 113,0.6) !important;
+	color: white;
+}

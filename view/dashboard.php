@@ -60,14 +60,14 @@
           <th>Actions</th>
         </tr> 
         <?php foreach ($taches as $tache): ?>
-          <tr> 
+          <tr class="<?= $tache->getEtatDisplay() === "Bloqué"? "tache-bloque": "" ?><?= $tache->getEtatDisplay() === "En cours"? "tache-encours": "" ?><?= $tache->getEtatDisplay() === "Terminé"? "tache-termine": "" ?>"> 
             <td><?= $tache->getId() ?></td>
             <td><?= $tache->getEtatDisplay() ?></td>
             <td><?= $tache->getEcheance() ?></td>
             <td><?= $tache->getutilisateur()->getLastname() . ' ' . $tache->getutilisateur()->getFirstname() ?></td>
             <td><?= $tache->getTitre() ?></td>
-            <td><?= $tache->getTmpRealisation() ?></td>
-            <td><?= empty($tache->getTmpReel()) ? "Non commencée" : $tache->getTmpReel() ?></td>
+            <td><?= $tache->getTmpRealisationDisplay() ?></td>
+            <td><?= empty($tache->getTmpReelDisplay()) ? "Non commencée" : $tache->getTmpReelDisplay() ?></td>
              <!-- <td>22/08/2016</td>-->
             <td class="edit"><a href="details?id=<?= $tache->getId() ?>"><i class="fa fa-info-circle details-icon"></i></a>
               <?php if (isset($_SESSION['chefdeprojet'])) : ?>

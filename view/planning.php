@@ -47,32 +47,32 @@
         <tr>
           <td>
             <?php foreach ($taches[0] as $tache) : ?>
-              <a href="details?id=<?= $tache->getId() ?>" class="cell-link" style="text-decoration:none"><div class="cell-div"><?= $tache->getTitre() ?></div></a>
+              <a href="details?id=<?= $tache->getId() ?>" class="cell-link" style="text-decoration:none"><div class="cell-div"><?= $tache->getEcheanceDateTime()->format('H:i') ?><br><?= $tache->getTitre() ?></div></a>
             <?php endforeach; ?>
           </td>
           <td>
             <?php foreach ($taches[1] as $tache) : ?>
-              <a href="details?id=<?= $tache->getId() ?>" class="cell-link" style="text-decoration:none"><div class="cell-div"><?= $tache->getTitre() ?></div></a>
+              <a href="details?id=<?= $tache->getId() ?>" class="cell-link" style="text-decoration:none"><div class="cell-div"><?= $tache->getEcheanceDateTime()->format('H:i') ?><br><?= $tache->getTitre() ?></div></a>
             <?php endforeach; ?>
           </td>
           <td>
             <?php foreach ($taches[2] as $tache) : ?>
-              <a href="details?id=<?= $tache->getId() ?>" class="cell-link" style="text-decoration:none"><div class="cell-div"><?= $tache->getTitre() ?></div></a>
+              <a href="details?id=<?= $tache->getId() ?>" class="cell-link" style="text-decoration:none"><div class="cell-div"><?= $tache->getEcheanceDateTime()->format('H:i') ?><br><?= $tache->getTitre() ?></div></a>
             <?php endforeach; ?>
           </td>
           <td>
             <?php foreach ($taches[3] as $tache) : ?>
-              <a href="details?id=<?= $tache->getId() ?>" class="cell-link" style="text-decoration:none"><div class="cell-div"><?= $tache->getTitre() ?></div></a>
+              <a href="details?id=<?= $tache->getId() ?>" class="cell-link" style="text-decoration:none"><div class="cell-div"><?= $tache->getEcheanceDateTime()->format('H:i') ?><br><?= $tache->getTitre() ?></div></a>
             <?php endforeach; ?>
           </td>
           <td>
             <?php foreach ($taches[4] as $tache) : ?>
-              <a href="details?id=<?= $tache->getId() ?>" class="cell-link" style="text-decoration:none"><div class="cell-div"><?= $tache->getTitre() ?></div></a>
+              <a href="details?id=<?= $tache->getId() ?>" class="cell-link" style="text-decoration:none"><div class="cell-div"><?= $tache->getEcheanceDateTime()->format('H:i') ?><br><?= $tache->getTitre() ?></div></a>
             <?php endforeach; ?>
           </td>
           <td>
             <?php foreach ($taches[5] as $tache) : ?>
-              <a href="details?id=<?= $tache->getId() ?>" class="cell-link" style="text-decoration:none"><div class="cell-div"><?= $tache->getTitre() ?></div></a>
+              <a href="details?id=<?= $tache->getId() ?>" class="cell-link" style="text-decoration:none"><div class="cell-div"><?= $tache->getEcheanceDateTime()->format('H:i') ?><br><?= $tache->getTitre() ?></div></a>
               <?php endforeach; ?>
           </td>
         </tr>
