@@ -48,4 +48,8 @@ $controller['GET']['/deleteTache']['controller'] = 'tache';
 $controller['GET']['/deleteTache']['action'] = 'delete';
 $controller['GET']['/deleteTache']['auth'] = 'chefdeprojet';
 
+$controller['GET']['/userboard']['controller'] = 'Userboard';
+$controller['GET']['/userboard']['action'] = 'index';
+$controller['GET']['/userboard']['auth'] = 'chefdeprojet';
+
 return $controller;
