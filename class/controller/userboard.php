@@ -7,7 +7,7 @@ namespace Controller;
  *
  * @author codati
  */
-class Dashboard {
+class Userboard {
 
   public function index() {
     $data['messages'] = $_SESSION['messages'];

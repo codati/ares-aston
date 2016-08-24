@@ -24,8 +24,8 @@
       <?php if (isset($_SESSION['chefdeprojet'])) : ?>
         <div class="menu-user">
           <ul class="liste-menu">
-            <a href="#"><li class="item-menu col-md-6 active">Liste des demandes</li></a>
-            <a href="#"><li class="item-menu col-md-6">Liste des utilisateurs</li></a>
+            <a href="dashboard"><li class="item-menu col-md-6 active">Liste des demandes</li></a>
+            <a href="userboard"><li class="item-menu col-md-6">Liste des utilisateurs</li></a>
           </ul>
         </div>
       <?php endif; ?>
