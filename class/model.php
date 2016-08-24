@@ -40,8 +40,8 @@ class Model {
     }
     $queryString .= ' ;';
     $query = \Bdd::getInstence()->prepare($queryString);
-    $query->execute($param);
-    
+    $query->execute($param) or die(print_r($query->errorInfo(), true));
+
     $objects = $query->fetchAll(\PDO::FETCH_CLASS, self::getClassName());
 
     return $objects;
@@ -52,7 +52,7 @@ class Model {
     $query = \Bdd::getInstence()->prepare('SELECT * FROM `' . self::getTableName() . '` WHERE `id` = :id');
     $query->bindParam('id', $id);
 
-    $query->execute();
+    $query->execute() or die(print_r($query->errorInfo(), true));
     $object = $query->fetchObject(self::getClassName());
 
     return $object;
