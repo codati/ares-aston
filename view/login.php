@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="icon" type="image/jpeg" href="images/logo.jpg" />
   </head>
   <body>
     <nav class="navbar navbar-default">
@@ -18,7 +19,7 @@
         <h1 class="main-title">Plateforme ARES</h1>
       </div>
     </nav>
-    
+
     <div class="login-container">
       <form action="login" method="post">
         <input class="form-control input" type="text" name="login" placeholder="Identifiant" value="<?= $login ?>">
