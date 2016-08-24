@@ -21,6 +21,12 @@
           <a href="addTache" class="add-tache"><i class="fa fa-plus"></i></a>
         <?php endif; ?>
       </div>
+      <div class="menu-user">
+        <ul class="liste-menu">
+          <a href="#"><li class="item-menu col-md-6 active">Liste des demandes</li></a>
+          <a href="#"><li class="item-menu col-md-6">Liste des utilisateurs</li></a>
+        </ul>
+      </div>
     </nav>
 
     <div class="table-responsive">
