@@ -63,7 +63,7 @@
           <tr class="<?= $tache->getEtatDisplay() === "Bloqué"? "tache-bloque": "" ?><?= $tache->getEtatDisplay() === "En cours"? "tache-encours": "" ?><?= $tache->getEtatDisplay() === "Terminé"? "tache-termine": "" ?>"> 
             <td><?= $tache->getId() ?></td>
             <td><?= $tache->getEtatDisplay() ?></td>
-            <td><?= $tache->getEcheance() ?></td>
+            <td>le <?= $tache->getEcheanceDateTime()->format('j-m-Y à H:i') ?></td>
             <td><?= $tache->getutilisateur()->getLastname() . ' ' . $tache->getutilisateur()->getFirstname() ?></td>
             <td><?= $tache->getTitre() ?></td>
             <td><?= $tache->getTmpRealisationDisplay() ?></td>
