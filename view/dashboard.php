@@ -20,7 +20,6 @@
         <?php if (isset($_SESSION['chefdeprojet'])) : ?>
           <a href="addTache" class="add-tache"><i class="fa fa-plus"></i></a>
         <?php endif; ?>
-
       </div>
     </nav>
 
@@ -41,7 +40,7 @@
             <td><?= $tache->getEtatDisplay() ?></td>
             <td><?= $tache->getEcheance() ?></td>
             <td><?= $tache->getutilisateur()->getLastname() . ' ' . $tache->getutilisateur()->getFirstname() ?></td>
-            <td><?= $tache->getDescription() ?></td>
+            <td><?= $tache->getTitre() ?></td>
              <!-- <td>22/08/2016</td>-->
             <td class="edit"><a href="details?id=<?= $tache->getId() ?>"><i class="fa fa-info-circle details-icon"></i></a>
               <?php if (isset($_SESSION['chefdeprojet'])) : ?>
