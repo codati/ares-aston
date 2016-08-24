@@ -26,10 +26,10 @@
           <ul class="liste-menu">
             <a href="dashboard"><li class="item-menu col-md-6">Liste des demandes</li></a>
             <?php if (isset($_SESSION['chefdeprojet'])) : ?>
-            <a href="userboard"><li class="item-menu col-md-6 active">Liste des utilisateurs</li></a>
+              <a href="userboard"><li class="item-menu col-md-6 active">Liste des utilisateurs</li></a>
             <?php endif; ?>
             <?php if (isset($_SESSION['utilisateur'])) : ?>
-            <a href="planning"><li class="item-menu col-md-6">Planning de la semaine</li></a>
+              <a href="planning"><li class="item-menu col-md-6">Planning de la semaine</li></a>
             <?php endif; ?>
           </ul>
         </div>
@@ -42,12 +42,14 @@
           <th>Id</th>
           <th>Action</th>
         </tr> 
+        <?php foreach ($utilisateurs as $utilisateur): ?>
           <tr> 
-            <td>Jaques</td>
-            <td>Chirac</td>
-            <td>42</td>
-            <td><a href="planning"><i class="fa fa-calendar details-icon"></i></a></td>
+            <td><?= $utilisateur->getLastName() ?></td>
+            <td><?= $utilisateur->getFirstName() ?></td>
+            <td><?= $utilisateur->getId() ?></td>
+            <td><a href="planning?id=<?= $utilisateur->getId() ?>"><i class="fa fa-calendar details-icon"></i></a></td>
           </tr>
+        <?php endforeach; ?>
       </table> 
     </div>
 
