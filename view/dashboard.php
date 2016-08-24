@@ -32,6 +32,10 @@
         <div class="message-create bg-success"><p>La demande a bien été créée.</p></div>
       <?php endif; ?>
 
+      <?php if ($messages['deleteTache']) : ?>
+        <div class="message-create bg-success"><p>La demande a bien été supprimée.</p></div>
+      <?php endif; ?>
+
       <table rules="all" class="table"> 
         <tr> 
           <th>Numéro de demande</th>
@@ -39,8 +43,9 @@
           <th>Echéance</th>
           <th>Assigné à</th>
           <th>Titre</th> 
-         <!-- <th>Date de création</th>-->
-          <th>Détails</th>
+          <th>Temps estimé</th>
+          <th>Temps de réalisation</th>
+          <th>Actions</th>
         </tr> 
         <?php foreach ($taches as $tache): ?>
           <tr> 
@@ -49,11 +54,13 @@
             <td><?= $tache->getEcheance() ?></td>
             <td><?= $tache->getutilisateur()->getLastname() . ' ' . $tache->getutilisateur()->getFirstname() ?></td>
             <td><?= $tache->getTitre() ?></td>
+            <td><?= $tache->getTmpRealisation()  ?></td>
+            <td><?= empty($tache->getTmpReel()) ? "Non commencée": $tache->getTmpReel() ?></td>
              <!-- <td>22/08/2016</td>-->
             <td class="edit"><a href="details?id=<?= $tache->getId() ?>"><i class="fa fa-info-circle details-icon"></i></a>
               <?php if (isset($_SESSION['chefdeprojet'])) : ?>
-                <a href="editTache?id=<?= $tache->getId() ?>"><i class="fa fa-pencil-square-o details-icon"></i></a></td>
-                <?php endif; ?>
+                <a href="editTache?id=<?= $tache->getId() ?>"><i class="fa fa-pencil-square-o details-icon"></i></a><a href=""><i class="fa fa-trash-o details-icon"></i></a></td>
+              <?php endif; ?>
             </td>
           </tr>
         <?php endforeach; ?>
