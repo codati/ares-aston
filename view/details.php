@@ -66,7 +66,7 @@
                 $scope.status = '<?= $tache->getEtat() ?>';
 
                 $scope.timeChrono = [];
-                $scope.timeChrono.total = <?= $tache->getTmpRealisation(); ?> * 60;
+                $scope.timeChrono.total = <?= $tache->getTmpRealisation() - $tache->getTmpReel(); ?> * 60;
                 var h = Math.floor(<?= $tache->getTmpRealisation(); ?> / 60);
                 var m = <?= $tache->getTmpRealisation(); ?> % 60;
                 h = h < 10 ? '0' + h : h;
@@ -74,9 +74,14 @@
                 $scope.time = h + ':' + m;
                 $interval(chrono, 1000);
                 chrono();
+                start = false;
                 $scope.$watch('status', function (etat) {
-                  $http.post('statusChange', {idTache:<?= $tache->getId(); ?>, etat: etat});
+                  if (start)
+                  {
 
+                    $http.post('statusChange', {idTache:<?= $tache->getId(); ?>, etat: etat, tmpReel: <?= $tache->getTmpRealisation(); ?> - Math.floor($scope.timeChrono.total / 60)});
+                  }
+                  start = true;
                 });
 
                 function chrono() {
