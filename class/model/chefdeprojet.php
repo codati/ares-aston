@@ -36,4 +36,11 @@ class ChefDeProjet extends \Model {
       return false;
     }
   }
+    public function jsonSerialize() {
+    $data = get_object_vars($this);
+    unset($data['password']);
+
+   // var_dump($data);
+    return $data;
+  }
 }

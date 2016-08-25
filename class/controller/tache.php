@@ -8,7 +8,7 @@
 
 namespace Controller;
 
-class Tache {
+class Tache{
 
   function getViewAdd() {
     $data['utilisateurs'] = \Model\Utilisateur::getAll();

@@ -11,7 +11,7 @@
  *
  * @author codati
  */
-class Model {
+abstract class Model implements \JsonSerializable {
 
   protected $id;
 
@@ -57,5 +57,7 @@ class Model {
 
     return $object;
   }
+
+
 
 }

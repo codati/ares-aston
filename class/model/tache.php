@@ -97,6 +97,7 @@ class Tache extends \Model {
   function getDateStart() {
     return $this->dateStart;
   }
+
   function getDateStartTimesTamp() {
     return strtotime($this->dateStart);
   }
@@ -183,6 +184,15 @@ class Tache extends \Model {
             'DELETE FROM `Tache` WHERE ((`id` = :id));;');
     $query->bindParam('id', $this->getId());
     $query->execute() or die(print_r($query->errorInfo(), true));
+  }
+
+  public function jsonSerialize() {
+    $data = get_object_vars($this);
+    $data ['etatDisplay'] = $this->getEtatDisplay();
+    $data ['dateStartTimesTamp'] = $this->getDateStartTimesTamp();
+    $data ['echeance'] = $this->getEcheanceDateTime()->getTimestamp();
+    $data ['utilisateur'] = $this->getUtilisateur()->jsonSerialize();
+    return $data;
   }
 
 }
