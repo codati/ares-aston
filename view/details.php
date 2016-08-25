@@ -10,7 +10,6 @@
     <script src="js/scripts.js"></script>
     <script src="js/jquery-3.1.0.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
-
   </head>
   <body ng-app="ares" ng-controller="details as details">
     <nav class="navbar navbar-default">
@@ -70,8 +69,8 @@
               .controller('details', function ($scope, $interval, $http) {
                 $scope.status = '<?= $tache->getEtat() ?>';
 
-                $scope.timeChrono = [];
-                $scope.timeChrono.total = <?= $tache->getTmpRealisation() - $tache->getTmpReel(); ?> * 60;
+                $scope.timeChrono = [];//  <?= time() - $tache->getDateStartTimesTamp() ?> <?= ($tache->getTmpRealisation() - $tache->getTmpReel()) * 60 ?> 
+                $scope.timeChrono.total = <?= $tache->getEtat() == 'enCours' ? ($tache->getTmpRealisation() - $tache->getTmpReel()) * 60 - ( time() - $tache->getDateStartTimesTamp() ) : $tache->getTmpRealisation() - $tache->getTmpReel() . ' * 60'; ?>;
                 $interval(chrono, 1000);
                 chrono();
                 var start = false;
@@ -118,14 +117,12 @@
                   else {
                     var notification = new Notification('Dépassement du temps imparti !', {
                       icon: 'images/logo.jpg',
-                      body: "Vous avez dépassez le temps prévu à : " + <?= $tache->getTmpRealisation(); ?> + " minutes !"
+                      body: "Vous avez dépassez le temps prévu à :  <?= $tache->getTmpRealisationDisplay(); ?>"
                     });
                   }
                 }
 
               });
-
-
 
     </script>
 

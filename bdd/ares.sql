@@ -30,6 +30,7 @@ CREATE TABLE `Tache` (
   `echeance` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `tmpRealisation` int(10) unsigned NOT NULL,
   `tmpReel` int(10) unsigned DEFAULT NULL,
+  `dateStart` timestamp NULL DEFAULT NULL,
   `etat` enum('assignee','enCours','bloque','termine') NOT NULL DEFAULT 'assignee',
   PRIMARY KEY (`id`),
   KEY `id_utilisateur` (`id_utilisateur`),
@@ -37,14 +38,14 @@ CREATE TABLE `Tache` (
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 TRUNCATE `Tache`;
-INSERT INTO `Tache` (`id`, `id_utilisateur`, `titre`, `description`, `echeance`, `tmpRealisation`, `tmpReel`, `etat`) VALUES
-(1,	1,	'test',	'test',	'2016-08-24 10:14:04',	100,	0,	'enCours'),
-(2,	2,	'Titre',	'des',	'2016-08-26 17:30:00',	35,	NULL,	'assignee'),
-(3,	3,	'title',	'des',	'2016-08-22 05:30:00',	70,	NULL,	'assignee'),
-(4,	1,	'test',	'test',	'2016-08-24 14:07:52',	100,	0,	'enCours'),
-(5,	2,	'Titre1',	'des',	'2016-08-24 14:08:57',	35,	NULL,	'assignee'),
-(6,	3,	'title',	'des',	'2016-08-24 14:07:52',	70,	NULL,	'assignee'),
-(7,	2,	'Titre2',	'des',	'2016-08-24 16:08:57',	35,	NULL,	'assignee');
+INSERT INTO `Tache` (`id`, `id_utilisateur`, `titre`, `description`, `echeance`, `tmpRealisation`, `tmpReel`, `dateStart`, `etat`) VALUES
+(1,	1,	'test',	'test',	'2016-08-24 10:14:04',	100,	10,	NULL,	'termine'),
+(2,	2,	'Titre',	'des',	'2016-08-26 17:30:00',	35,	1,	NULL,	'termine'),
+(3,	3,	'title',	'des',	'2016-08-22 05:30:00',	70,	NULL,	NULL,	'assignee'),
+(4,	1,	'test',	'test',	'2016-08-24 14:07:52',	100,	0,	NULL,	'enCours'),
+(5,	2,	'Titre1',	'des',	'2016-08-24 14:08:57',	35,	8,	NULL,	'termine'),
+(6,	3,	'title',	'des',	'2016-08-24 14:07:52',	70,	NULL,	NULL,	'assignee'),
+(7,	2,	'Titre2',	'des',	'2016-08-24 16:08:57',	35,	NULL,	NULL,	'assignee');
 
 DROP TABLE IF EXISTS `Utilisateur`;
 CREATE TABLE `Utilisateur` (
@@ -62,4 +63,4 @@ INSERT INTO `Utilisateur` (`id`, `login`, `password`, `firstName`, `lastName`) V
 (2,	'test2',	'$2y$10$pTEmeZu2dtDstB0v.7wSTOwWVZlNCNMK74WnGJod57RoNiDeGgLyS',	'Iven',	'Rancourt'),
 (3,	'test3',	'$2y$10$pTEmeZu2dtDstB0v.7wSTOwWVZlNCNMK74WnGJod57RoNiDeGgLyS',	'Timothée',	'Pouchard');
 
--- 2016-08-24 14:20:19
+-- 2016-08-25 08:50:16

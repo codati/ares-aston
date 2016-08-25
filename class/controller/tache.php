@@ -57,7 +57,13 @@ class Tache {
     $tache = \Model\Tache::getById($input['idTache']);
     $tache->setEtat($input['etat']);
     $tache->setTmpReel($input['tmpReel']);
+    if ($input['etat'] == 'enCours') {
+
+      $tache->setDateStart(date('Y-m-d H:i:s'));
+      var_dump($tache);
+    }
     $tache->save();
+    
   }
 
   function delete() {

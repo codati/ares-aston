@@ -22,6 +22,7 @@ class Tache extends \Model {
   private $echeance;
   private $tmpRealisation;
   private $tmpReel;
+  private $dateStart;
   private $etat;
 
   function getId_utilisateur() {
@@ -93,6 +94,17 @@ class Tache extends \Model {
     return $etat[$this->etat];
   }
 
+  function getDateStart() {
+    return $this->dateStart;
+  }
+  function getDateStartTimesTamp() {
+    return strtotime($this->dateStart);
+  }
+
+  function setDateStart($dateStart) {
+    $this->dateStart = $dateStart;
+  }
+
   function setId_utilisateur($id_utilisateur) {
     $this->id_utilisateur = $id_utilisateur;
   }
@@ -124,7 +136,7 @@ class Tache extends \Model {
   public function update() {
 
     $query = \Bdd::getInstence()->prepare(
-            'UPDATE `Tache` SET `id_utilisateur` = :id_utilisateur, `titre` = :titre, `description` = :description, `echeance` = :echeance, `tmpRealisation` = :tmpRealisation, `tmpReel` = :tmpReel, `etat` = :etat WHERE `id` = :id;'
+            'UPDATE `Tache` SET `id_utilisateur` = :id_utilisateur, `titre` = :titre, `description` = :description, `echeance` = :echeance, `tmpRealisation` = :tmpRealisation, `tmpReel` = :tmpReel, `etat` = :etat ,`dateStart` = :dateStart WHERE `id` = :id;'
     );
     $query->bindParam('description', $this->getDescription());
     $query->bindParam('echeance', $this->getEcheance());
@@ -134,6 +146,7 @@ class Tache extends \Model {
     $query->bindParam('titre', $this->getTitre());
     $query->bindParam('tmpRealisation', $this->getTmpRealisation());
     $query->bindParam('tmpReel', $this->getTmpReel());
+    $query->bindParam('dateStart', $this->getDateStart());
 
     $query->execute();
   }
