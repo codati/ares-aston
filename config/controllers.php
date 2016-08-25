@@ -56,4 +56,7 @@ $controller['GET']['/planning']['controller'] = 'Userboard';
 $controller['GET']['/planning']['action'] = 'viewPlanning';
 $controller['GET']['/planning']['auth'] = 'utilisateur';
 
+$controller['GET']['/wikiares']['controller'] = 'Wikiares';
+$controller['GET']['/wikiares']['action'] = 'index';
+
 return $controller;

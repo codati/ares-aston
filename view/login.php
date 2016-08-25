@@ -19,6 +19,7 @@
         <h1 class="main-title">Plateforme ARES</h1>
       </div>
     </nav>
+    <a href="wikiares" class="doc-link">Documentation <i class="fa fa-book"></i></a>
 
     <div class="login-container">
       <form action="login" method="post">

@@ -21,6 +21,7 @@
         <?php if (isset($_SESSION['chefdeprojet'])) : ?>
           <a href="addTache" class="add-tache"><i class="fa fa-plus"></i></a>
         <?php endif; ?>
+        
       </div>
       <div class="menu-user">
         <ul class="liste-menu">

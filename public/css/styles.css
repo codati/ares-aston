@@ -141,7 +141,7 @@ table {
 	border-bottom: 2px solid rgba(243, 156, 18,1.0);
 }
 
-.detail-container {
+.detail-container, .doc-presentation {
 	border-bottom: 2px solid rgba(243, 156, 18,1.0);
 	border-top: 2px solid rgba(243, 156, 18,1.0);
 	border-right: 2px solid rgba(243, 156, 18,1.0);
@@ -150,7 +150,7 @@ table {
 	background-color: rgba(236, 240, 241,1.0);
 }
 
-.chrono-container {
+.chrono-container, .doc-utilisation {
 	float:right !important;
 	border-bottom: 2px solid rgba(243, 156, 18,1.0);
 	border-top: 2px solid rgba(243, 156, 18,1.0);
@@ -327,4 +327,38 @@ a {
 .tache-termine{
 	background-color: rgba(46, 204, 113,0.6) !important;
 	color: white;
+}
+
+.doc-link {
+	position: fixed;
+	bottom: 25px;
+	left: 40%; 
+	font-size: 2em;
+	color: rgba(243, 156, 18,1.0);
+	background-color: white;
+	text-decoration: none;
+	width: 250px;
+	height: 50px;
+	text-align: center;
+	border-radius: 25px;
+	box-shadow: 0px 0px 3px white;
+	transition: all 0.3s ease;
+	padding-top: 4px;
+}
+
+.doc-link:hover {
+	color: rgba(41, 128, 185,1.0);
+	background-color: rgba(243, 156, 18,1.0);
+	box-shadow: 0px 0px 10px rgba(243, 156, 18,1.0);
+}
+
+.doc-presentation {
+	margin-right: 10px;
+	padding: 10px;
+}
+
+.doc-utilisation {
+	margin-left: 10px;
+	padding: 10px;
+	margin-bottom: 15px;
 }
