@@ -10,6 +10,8 @@
 
     <script src="js/jquery-3.1.0.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <script src='js/socket.io.js'></script>
+    <script src="js/socket.js"></script>
   </head>
   <body ng-app="ares" ng-controller="dashboard as dashboard">
     <nav class="navbar navbar-default">
@@ -24,7 +26,7 @@
         <?php if (isset($_SESSION['chefdeprojet'])) : ?>
           <a href="addTache" class="add-tache"><i class="fa fa-plus"></i></a>
         <?php endif; ?>
-        
+
       </div>
       <div class="menu-user">
         <ul class="liste-menu">
@@ -65,7 +67,7 @@
         </tr> 
         <tr ng-repeat="tache in taches" ng-class="{'tache-bloque': tache.etat === 'bloque','tache-encours' :tache.etat === 'enCours' ,'tache-termine' :tache.etat ==='termine'  }"> 
           <td>{{ tache.id}}</td>
-          <td>{{ tache.etatDisplay}}</td>
+          <td>{{ tache.etatDisplay[tache.etat]}}</td>
           <td>le {{ tache.echeance | date: 'dd-MM-yyyy à HH:mm'}}</td>
           <td>{{ tache.utilisateur.lastName +' '+tache.utilisateur.firstName }}</td>
           <td>{{ tache.titre}}</td>
@@ -78,11 +80,20 @@
               <?php endif; ?>
           </td>
         </tr>
-      </table> 
+      </table>
     </div>
     <script type="text/javascript">
-      angular.module('ares', [])
-              .controller('dashboard', function ($scope, $interval) {
+      angular.module('ares', ['btford.socket-io'])
+              .factory('mySocket', function (socketFactory) {
+                var myIoSocket = io.connect('http://localhost:3000/');
+
+                mySocket = socketFactory({
+                  ioSocket: myIoSocket
+                });
+
+                return mySocket;
+              })
+              .controller('dashboard', function ($scope, $interval, mySocket) {
                 $scope.taches = <?= json_encode($taches, true); ?>;
                 console.log($scope.taches);
                 for (var tacheIndex in $scope.taches) {
@@ -96,6 +107,19 @@
                   }
 
                 }
+
+                mySocket.on('statusChange', function (data) {
+                  console.log(data);
+                  for (var tacheIndex in $scope.taches) {
+                    var tache = $scope.taches[tacheIndex];
+
+                    if (tache.id == data.idTache)
+                    {
+                      tache.etat = data.etat;
+                    }
+                  }
+                });
+
                 this.calculTime = function (time)
                 {
                   var h = Math.floor(time / 60);

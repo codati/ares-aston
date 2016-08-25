@@ -10,6 +10,8 @@
     <script src="js/scripts.js"></script>
     <script src="js/jquery-3.1.0.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <script src='js/socket.io.js'></script>
+    <script src="js/socket.js"></script>
   </head>
   <body ng-app="ares" ng-controller="details as details">
     <nav class="navbar navbar-default">
@@ -65,8 +67,17 @@
 
     <script type="text/javascript">
 
-      angular.module('ares', [])
-              .controller('details', function ($scope, $interval, $http) {
+      angular.module('ares', ['btford.socket-io'])
+              .factory('mySocket', function (socketFactory) {
+                var myIoSocket = io.connect('http://localhost:3000/');
+
+                mySocket = socketFactory({
+                  ioSocket: myIoSocket
+                });
+
+                return mySocket;
+              })
+              .controller('details', function ($scope, $interval, $http, mySocket) {
                 $scope.status = '<?= $tache->getEtat() ?>';
 
                 $scope.timeChrono = [];//  <?= time() - $tache->getDateStartTimesTamp() ?> <?= ($tache->getTmpRealisation() - $tache->getTmpReel()) * 60 ?> 
@@ -78,8 +89,18 @@
                   if (start)
                   {
                     $http.post('statusChange', {idTache:<?= $tache->getId(); ?>, etat: etat, tmpReel: <?= $tache->getTmpRealisation(); ?> - Math.floor($scope.timeChrono.total / 60)});
+                    mySocket.emit('statusChange', {idTache:<?= $tache->getId(); ?>, etat: etat, tmpReel: <?= $tache->getTmpRealisation(); ?> - Math.floor($scope.timeChrono.total / 60)});
                   }
                   start = true;
+                });
+
+                mySocket.on('statusChange', function (data) {
+                  console.log(data);
+                  if (<?= $tache->getId(); ?> == data.idTache)
+                  {
+                    $scope.status = data.etat;
+                  }
+
                 });
 
                 function chrono() {

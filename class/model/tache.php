@@ -24,7 +24,14 @@ class Tache extends \Model {
   private $tmpReel;
   private $dateStart;
   private $etat;
-
+  
+  private $etatDisplay = array(
+        'assignee' => 'Assigné',
+        'enCours' => 'En cours',
+        'bloque' => 'Bloqué',
+        'termine' => 'Terminé',
+    );
+  
   function getId_utilisateur() {
     return $this->id_utilisateur;
   }
@@ -83,15 +90,7 @@ class Tache extends \Model {
   }
 
   function getEtatDisplay() {
-    $etat = array(
-        'assignee' => 'Assigné',
-        'enCours' => 'En cours',
-        'bloque' => 'Bloqué',
-        'termine' => 'Terminé',
-    );
-
-
-    return $etat[$this->etat];
+    return $this->etatDisplay[$this->etat];
   }
 
   function getDateStart() {
@@ -188,7 +187,6 @@ class Tache extends \Model {
 
   public function jsonSerialize() {
     $data = get_object_vars($this);
-    $data ['etatDisplay'] = $this->getEtatDisplay();
     $data ['dateStartTimesTamp'] = $this->getDateStartTimesTamp();
     $data ['echeance'] = $this->getEcheanceDateTime()->getTimestamp();
     $data ['utilisateur'] = $this->getUtilisateur()->jsonSerialize();
