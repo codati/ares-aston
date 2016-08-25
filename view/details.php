@@ -34,7 +34,7 @@
       <p class="title-details"><?= $tache->getTitre(); ?></p> 
       <hr>
       <h2>Temps estimé :</h2>
-      <p> {{ time }}</p>
+      <p> <?= $tache->getTmpRealisationDisplay(); ?> </p>
       <hr>
       <h2>Description :</h2>
       <p class="description-text"><?= $tache->getDescription(); ?>.</p>
@@ -47,13 +47,13 @@
         </div><br>
 
 
-        <button class="btn btn-chrono btn-primary" id="btn-play" ng-click="status = 'enCours'"><i class="fa fa-play-circle-o"></i></button>
-        <button class="btn btn-chrono btn-danger" id="btn-pause" ng-click="status = 'bloque'"><i class="fa fa-pause-circle-o"></i></button>
-        <button class="btn btn-success btn-chrono" id="btn-stop" ng-click="status = 'termine'"><i class="fa fa-stop-circle-o"></i></button>
+        <button class="btn btn-chrono btn-primary" id="btn-play" ng-click="status = 'enCours'" ng-disabled="status === 'termine'"><i class="fa fa-play-circle-o"></i></button>
+        <button class="btn btn-chrono btn-danger" id="btn-pause" ng-click="status = 'bloque'" ng-disabled="status === 'termine'"><i class="fa fa-pause-circle-o"></i></button>
+        <button class="btn btn-success btn-chrono" id="btn-stop" ng-click="status = 'termine'" ng-disabled="status === 'termine'"><i class="fa fa-stop-circle-o"></i></button>
 
         <hr>
         <h2 class="state">Statut :</h2>
-        <select name="type" id="select-state" class="form-control state-control" ng-model="status">
+        <select name="type" id="select-state" class="form-control state-control" ng-disabled="status === 'termine'" ng-model="status">
           <option disabled value="assignee">Assigné</option>
           <option id="st-play" value="enCours" >En cours</option>
           <option id="st-pause" value="bloque" >Bloqué</option>
@@ -72,18 +72,12 @@
 
                 $scope.timeChrono = [];
                 $scope.timeChrono.total = <?= $tache->getTmpRealisation() - $tache->getTmpReel(); ?> * 60;
-                var h = Math.floor(<?= $tache->getTmpRealisation(); ?> / 60);
-                var m = <?= $tache->getTmpRealisation(); ?> % 60;
-                h = h < 10 ? '0' + h : h;
-                m = m < 10 ? '0' + m : m;
-                $scope.time = h + ':' + m;
                 $interval(chrono, 1000);
                 chrono();
-                start = false;
+                var start = false;
                 $scope.$watch('status', function (etat) {
                   if (start)
                   {
-
                     $http.post('statusChange', {idTache:<?= $tache->getId(); ?>, etat: etat, tmpReel: <?= $tache->getTmpRealisation(); ?> - Math.floor($scope.timeChrono.total / 60)});
                   }
                   start = true;
